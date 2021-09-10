@@ -6,6 +6,25 @@ axios.defaults.baseURL = "https://www.metaweather.com";
 
 type Coords = Pick<GeolocationCoordinates, "latitude" | "longitude">;
 
+export interface Weather {
+  air_pressure: number;
+  humidity: number;
+  max_temp: number;
+  min_temp: number;
+  predictability: number;
+  the_temp: number;
+  visibility: number;
+  weather_state_abbr: string;
+  weather_state_name: string;
+  wind_direction: number;
+  wind_direction_compass: string;
+  wind_speed: number;
+}
+
+export interface ConsolidatedWeather {
+  [key: number]: Weather;
+}
+
 const optionObj: PositionOptions = {
   enableHighAccuracy: false,
   timeout: 3000,
@@ -26,7 +45,9 @@ const ERROR_MESSAGE: { [key: number]: string } = {
 };
 
 const WeatherApp: VFC = () => {
-  const [weatherData, setWeatherData] = useState(null);
+  const [weatherData, setWeatherData] = useState<ConsolidatedWeather | null>(
+    null
+  );
 
   useEffect(() => {
     const fetchWeatherData = async (coords: Coords) => {
@@ -39,7 +60,7 @@ const WeatherApp: VFC = () => {
           `/api/location/${locationData?.data[0]?.woeid}`
         );
 
-        setWeatherData(weatherData.data);
+        setWeatherData(weatherData.data.consolidated_weather);
       } catch (e) {
         alert(e);
       }
