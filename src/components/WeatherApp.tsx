@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import type { VFC } from "react";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -24,7 +25,7 @@ const ERROR_MESSAGE: { [key: number]: string } = {
   3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。",
 };
 
-const WeatherApp = () => {
+const WeatherApp: VFC = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   useEffect(() => {
