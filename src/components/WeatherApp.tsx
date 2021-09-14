@@ -50,7 +50,7 @@ const WeatherApp: VFC = () => {
   );
 
   useEffect(() => {
-    const fetchWeatherData = async (coords: Coords) => {
+    const fetchWeatherData = async (coords: Coords): Promise<void> => {
       try {
         const locationData = await axios.get(
           `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
