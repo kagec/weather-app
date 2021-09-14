@@ -25,7 +25,7 @@ export interface ConsolidatedWeather {
   [key: number]: Weather;
 }
 
-const optionObj: PositionOptions = {
+const POS_OPTION: PositionOptions = {
   enableHighAccuracy: false,
   timeout: 3000,
   maximumAge: 0,
@@ -79,7 +79,7 @@ const WeatherApp: VFC = () => {
       navigator.geolocation.getCurrentPosition(
         successFunc,
         errorFunc,
-        optionObj
+        POS_OPTION
       );
     } else {
       alert("Geolocation API がサポートされていません");
