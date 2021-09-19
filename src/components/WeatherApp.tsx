@@ -8,6 +8,7 @@ type Coords = Pick<GeolocationCoordinates, "latitude" | "longitude">;
 
 export interface Weather {
   air_pressure: number;
+  applicable_date: string;
   humidity: number;
   max_temp: number;
   min_temp: number;
