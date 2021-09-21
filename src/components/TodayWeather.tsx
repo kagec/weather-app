@@ -15,6 +15,10 @@ const TodayWeather: VFC = () => {
     <div>Loading...</div>
   ) : (
     <div>
+      <img
+        src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData?.weather_state_abbr}.png`}
+        alt="weather image"
+      />
       <p>{Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}℃</p>
       <p>{todayWeatherData?.weather_state_name}</p>
       <p>
