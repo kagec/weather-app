@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import type { VFC } from "react";
+import { useDispatch } from "react-redux";
 import TodayWeather from "./TodayWeather";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
@@ -45,9 +46,7 @@ const ERROR_MESSAGE: { [key: number]: string } = {
 };
 
 const WeatherApp: VFC = () => {
-  const [weatherData, setWeatherData] = useState<ConsolidatedWeather | null>(
-    null
-  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchWeatherData = async (coords: Coords): Promise<void> => {
@@ -60,7 +59,10 @@ const WeatherApp: VFC = () => {
           `/api/location/${locationData?.data[0]?.woeid}`
         );
 
-        setWeatherData(weatherData.data.consolidated_weather);
+        dispatch({
+          type: "SAVE_WEATHER_DATA",
+          payload: weatherData.data.consolidated_weather,
+        });
       } catch (e) {
         alert(e);
       }
@@ -85,9 +87,8 @@ const WeatherApp: VFC = () => {
       alert("Geolocation API がサポートされていません");
       fetchWeatherData(DEFAULT_LOCATION);
     }
-  }, []);
+  }, [dispatch]);
 
-  console.log(weatherData);
   return (
     <div>
       <TodayWeather />
