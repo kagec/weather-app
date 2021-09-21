@@ -24,6 +24,14 @@ export interface Weather {
   wind_speed: number;
 }
 
+export interface Location {
+  distance: number;
+  latt_long: string;
+  location_type: string;
+  title: string;
+  woeid: number;
+}
+
 export type ConsolidatedWeather = Weather[];
 
 const POS_OPTION: PositionOptions = {
