@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import type { VFC } from "react";
 import { useDispatch } from "react-redux";
 import TodayWeather from "./TodayWeather";
+import { saveLocationData } from "../action/location";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -62,6 +63,8 @@ const WeatherApp: VFC = () => {
         const locationData = await axios.get(
           `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
         );
+
+        dispatch(saveLocationData(locationData.data[0]));
 
         const weatherData = await axios.get(
           `/api/location/${locationData?.data[0]?.woeid}`
