@@ -1,4 +1,4 @@
-import { ConsolidatedWeather } from "../components/WeatherApp";
+import type { ConsolidatedWeather } from "../components/WeatherApp";
 
 export const WEATHER_ACTION_TYPE = {
   SAVE_WEATHER_DATA: "SAVE_WEATHER_DATA",

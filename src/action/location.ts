@@ -1,4 +1,4 @@
-import { Location } from "../components/WeatherApp";
+import type { Location } from "../components/WeatherApp";
 
 export const LOCATION_ACTION_TYPE = {
   SAVE_LOCATION_DATA: "SAVE_LOCATION_DATA",
