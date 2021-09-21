@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import type { VFC } from "react";
+import TodayWeather from "./TodayWeather";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -87,7 +88,11 @@ const WeatherApp: VFC = () => {
   }, []);
 
   console.log(weatherData);
-  return <div></div>;
+  return (
+    <div>
+      <TodayWeather />
+    </div>
+  );
 };
 
 export default WeatherApp;
