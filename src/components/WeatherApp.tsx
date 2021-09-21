@@ -22,9 +22,7 @@ export interface Weather {
   wind_speed: number;
 }
 
-export interface ConsolidatedWeather {
-  [key: number]: Weather;
-}
+export type ConsolidatedWeather = Weather[];
 
 const POS_OPTION: PositionOptions = {
   enableHighAccuracy: false,
