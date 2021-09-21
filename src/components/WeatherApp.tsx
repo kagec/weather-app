@@ -4,6 +4,7 @@ import type { VFC } from "react";
 import { useDispatch } from "react-redux";
 import TodayWeather from "./TodayWeather";
 import { saveLocationData } from "../action/location";
+import { saveWeatherData } from "../action/weather";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -70,10 +71,7 @@ const WeatherApp: VFC = () => {
           `/api/location/${locationData?.data[0]?.woeid}`
         );
 
-        dispatch({
-          type: "SAVE_WEATHER_DATA",
-          payload: weatherData.data.consolidated_weather,
-        });
+        dispatch(saveWeatherData(weatherData.data.consolidated_weather));
       } catch (e) {
         alert(e);
       }
