@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import type { VFC } from "react";
-import type { Reducer } from "../reducer";
+import { RootState } from "../store";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -8,8 +8,8 @@ const changeDateFormat = (dateString: string): string => {
 };
 
 const TodayWeather: VFC = () => {
-  const todayWeatherData = useSelector((state: Reducer) => state.weather[0]);
-  const location = useSelector((state: Reducer) => state.location);
+  const todayWeatherData = useSelector((state: RootState) => state.weather[0]);
+  const location = useSelector((state: RootState) => state.location);
 
   return !todayWeatherData ? (
     <div>Loading...</div>
