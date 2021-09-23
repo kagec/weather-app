@@ -1,4 +1,4 @@
-import { LOCATION_ACTION_TYPE } from "../action/location";
+import { LocationAction, LOCATION_ACTION_TYPE } from "../action/location";
 import type { Location } from "../components/WeatherApp";
 
 const locationState: Location = {
@@ -11,7 +11,7 @@ const locationState: Location = {
 
 export const locationReducer = (
   state = locationState,
-  { type, payload }: { type: string; payload: Location }
+  { type, payload }: LocationAction
 ) => {
   switch (type) {
     case LOCATION_ACTION_TYPE.SAVE_LOCATION_DATA:
