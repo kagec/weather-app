@@ -1,7 +1,7 @@
 import { LocationAction, LOCATION_ACTION_TYPE } from "../action/location";
 import type { Location } from "../components/WeatherApp";
 
-const locationState: Location = {
+const initialState: Location = {
   distance: 0,
   title: "Tokyo",
   location_type: "City",
@@ -10,7 +10,7 @@ const locationState: Location = {
 };
 
 export const locationReducer = (
-  state = locationState,
+  state = initialState,
   { type, payload }: LocationAction
 ) => {
   switch (type) {
