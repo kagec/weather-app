@@ -7,7 +7,7 @@ export const weatherReducer = (
 ) => {
   switch (type) {
     case WEATHER_ACTION_TYPE.SAVE_WEATHER_DATA:
-      return { ...state, ...payload };
+      return [...state, ...payload];
     default:
       return state;
   }
