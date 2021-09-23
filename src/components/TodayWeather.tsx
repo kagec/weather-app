@@ -17,18 +17,18 @@ const TodayWeather: VFC = () => {
   ) : (
     <div>
       <img
-        src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData?.weather_state_abbr}.png`}
+        src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData.weather_state_abbr}.png`}
         alt="weather"
       />
       <p>{Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}℃</p>
-      <p>{todayWeatherData?.weather_state_name}</p>
+      <p>{todayWeatherData.weather_state_name}</p>
       <p>
         Today ・
         {todayWeatherData
           ? changeDateFormat(todayWeatherData.applicable_date)
           : null}
       </p>
-      <p>{location?.title}</p>
+      <p>{location.title}</p>
     </div>
   );
 };
