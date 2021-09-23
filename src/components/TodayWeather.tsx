@@ -8,8 +8,9 @@ const changeDateFormat = (dateString: string): string => {
 };
 
 const TodayWeather: VFC = () => {
-  const todayWeatherData = useSelector((state: RootState) => state.weather[0]);
-  const location = useSelector((state: RootState) => state.location);
+  const state = useSelector((state: RootState) => state);
+  const todayWeatherData = state.weather[0];
+  const location = state.location;
 
   return !todayWeatherData ? (
     <div>Loading...</div>
