@@ -3,6 +3,16 @@ import type { VFC } from "react";
 import { RootState } from "../store";
 import styled from "styled-components";
 import backgroundImage from "../image/Cloud-background.png";
+import Clear from "../image/Clear.png";
+import Hail from "../image/Hail.png";
+import HeavyCloud from "../image/HeavyCloud.png";
+import HeavyRain from "../image/HeavyRain.png";
+import LightCloud from "../image/LightCloud.png";
+import LightRain from "../image/LightRain.png";
+import Shower from "../image/Shower.png";
+import Sleet from "../image/Sleet.png";
+import Snow from "../image/Snow.png";
+import Thunderstorm from "../image/Thunderstorm.png";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
