@@ -28,7 +28,7 @@ const TodayWeather: VFC = () => {
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
             <span>℃</span>
           </Temperature>
-          <p>{todayWeatherData.weather_state_name}</p>
+          <WeatherName>{todayWeatherData.weather_state_name}</WeatherName>
           <p>
             {/* ここの{" "}はレイアウトの調整です */}
             Today ・{" "}
@@ -82,6 +82,12 @@ const Temperature = styled.p`
     font-size: 48px;
     color: #a09fb1;
   }
+`;
+
+const WeatherName = styled.p`
+  color: #a09fb1;
+  font-weight: 600;
+  font-size: 36px;
 `;
 
 export default TodayWeather;
