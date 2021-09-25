@@ -19,7 +19,7 @@ const TodayWeather: VFC = () => {
       {!todayWeatherData ? (
         <div>Loading...</div>
       ) : (
-        <div>
+        <TodayWeatherContainer>
           <img
             src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData.weather_state_abbr}.png`}
             alt="weather"
@@ -37,7 +37,7 @@ const TodayWeather: VFC = () => {
               : null}
           </p>
           <p>{location.title}</p>
-        </div>
+        </TodayWeatherContainer>
       )}
     </TodayWeatherWrapper>
   );
@@ -59,6 +59,17 @@ const TodayWeatherWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: auto;
   background-position: -110px 0;
+`;
+
+const TodayWeatherContainer = styled.div`
+  > img {
+    width: 202px;
+    height: 234px;
+  }
+
+  > p:not(:last-child) {
+    margin-top: 87px;
+  }
 `;
 
 export default TodayWeather;
