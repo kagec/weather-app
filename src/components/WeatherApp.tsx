@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import TodayWeather from "./TodayWeather";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
+import styled from "styled-components";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -99,10 +100,15 @@ const WeatherApp: VFC = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <AppContainer>
       <TodayWeather />
-    </div>
+    </AppContainer>
   );
 };
+
+const AppContainer = styled.div`
+  position: relative;
+  margin: 0 auto;
+`;
 
 export default WeatherApp;
