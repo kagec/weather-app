@@ -64,10 +64,7 @@ const TodayWeather: VFC = () => {
         <div>Loading...</div>
       ) : (
         <TodayWeatherContainer>
-          <img
-            src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData.weather_state_abbr}.png`}
-            alt="weather"
-          />
+          {getWeatherImage(todayWeatherData.weather_state_abbr)}
           <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
             <span>℃</span>
