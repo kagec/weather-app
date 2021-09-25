@@ -61,7 +61,7 @@ const TodayWeather: VFC = () => {
   return (
     <TodayWeatherWrapper>
       {!todayWeatherData ? (
-        <div>Loading...</div>
+        <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>
           {getWeatherImage(todayWeatherData.weather_state_abbr)}
@@ -151,6 +151,10 @@ const MaterialIcon = styled.span`
   vertical-align: top;
   margin-right: 9px;
   font-size: 22px;
+`;
+
+const Loading = styled.div`
+  color: #fff;
 `;
 
 export default TodayWeather;
