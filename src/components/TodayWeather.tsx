@@ -36,7 +36,7 @@ const TodayWeather: VFC = () => {
               ? changeDateFormat(todayWeatherData.applicable_date)
               : null}
           </Day>
-          <p>{location.title}</p>
+          <Place>{location.title}</Place>
         </TodayWeatherContainer>
       )}
     </TodayWeatherWrapper>
@@ -94,6 +94,13 @@ const Day = styled.p`
   color: #88869d;
   font-weight: 500;
   font-size: 18px;
+`;
+
+const Place = styled.p`
+  color: #88869d;
+  font-weight: 600;
+  font-size: 18px;
+  margin-top: 32px;
 `;
 
 export default TodayWeather;
