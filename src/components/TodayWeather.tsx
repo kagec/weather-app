@@ -19,6 +19,40 @@ const changeDateFormat = (dateString: string): string => {
   return date.toUTCString().slice(0, 12);
 };
 
+const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
+  weatherStateAbbr
+) => {
+  switch (weatherStateAbbr) {
+    case "c":
+      return <img src={Clear} alt="clear" />;
+    case "h":
+      return <img src={Hail} alt="hail" />;
+    case "hc":
+      return <img src={HeavyCloud} alt="heavy cloud" />;
+    case "hr":
+      return <img src={HeavyRain} alt="heavy rain" />;
+    case "lc":
+      return <img src={LightCloud} alt="light cloud" />;
+    case "lr":
+      return <img src={LightRain} alt="light rain" />;
+    case "s":
+      return <img src={Shower} alt="shower" />;
+    case "sl":
+      return <img src={Sleet} alt="sleet" />;
+    case "sn":
+      return <img src={Snow} alt="snow" />;
+    case "t":
+      return <img src={Thunderstorm} alt="thunderstorm" />;
+    default:
+      return (
+        <img
+          src={`https://www.metaweather.com/static/img/weather/png/${weatherStateAbbr}.png`}
+          alt="weather"
+        />
+      );
+  }
+};
+
 const TodayWeather: VFC = () => {
   const state = useSelector((state: RootState) => state);
   const todayWeatherData = state.weather[0];
