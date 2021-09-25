@@ -36,7 +36,10 @@ const TodayWeather: VFC = () => {
               ? changeDateFormat(todayWeatherData.applicable_date)
               : null}
           </Day>
-          <Place>{location.title}</Place>
+          <Place>
+            <span className="material-icons">location_on</span>
+            {location.title}
+          </Place>
         </TodayWeatherContainer>
       )}
     </TodayWeatherWrapper>
