@@ -24,10 +24,10 @@ const TodayWeather: VFC = () => {
             src={`https://www.metaweather.com/static/img/weather/png/${todayWeatherData.weather_state_abbr}.png`}
             alt="weather"
           />
-          <p>
+          <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
             <span>℃</span>
-          </p>
+          </Temperature>
           <p>{todayWeatherData.weather_state_name}</p>
           <p>
             {/* ここの{" "}はレイアウトの調整です */}
@@ -69,6 +69,18 @@ const TodayWeatherContainer = styled.div`
 
   > p:not(:last-child) {
     margin-top: 87px;
+  }
+`;
+
+const Temperature = styled.p`
+  font-weight: 500;
+  font-size: 144px;
+  color: #e7e7eb;
+
+  > span {
+    font-weight: 100;
+    font-size: 48px;
+    color: #a09fb1;
   }
 `;
 
