@@ -29,13 +29,13 @@ const TodayWeather: VFC = () => {
             <span>℃</span>
           </Temperature>
           <WeatherName>{todayWeatherData.weather_state_name}</WeatherName>
-          <p>
+          <Day>
             {/* ここの{" "}はレイアウトの調整です */}
             Today ・{" "}
             {todayWeatherData
               ? changeDateFormat(todayWeatherData.applicable_date)
               : null}
-          </p>
+          </Day>
           <p>{location.title}</p>
         </TodayWeatherContainer>
       )}
@@ -88,6 +88,12 @@ const WeatherName = styled.p`
   color: #a09fb1;
   font-weight: 600;
   font-size: 36px;
+`;
+
+const Day = styled.p`
+  color: #88869d;
+  font-weight: 500;
+  font-size: 18px;
 `;
 
 export default TodayWeather;
