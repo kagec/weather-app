@@ -37,7 +37,7 @@ const TodayWeather: VFC = () => {
               : null}
           </Day>
           <Place>
-            <span className="material-icons">location_on</span>
+            <MaterialIcon className="material-icons">location_on</MaterialIcon>
             {location.title}
           </Place>
         </TodayWeatherContainer>
@@ -104,6 +104,12 @@ const Place = styled.p`
   font-weight: 600;
   font-size: 18px;
   margin-top: 32px;
+`;
+
+const MaterialIcon = styled.span`
+  vertical-align: top;
+  margin-right: 9px;
+  font-size: 22px;
 `;
 
 export default TodayWeather;
