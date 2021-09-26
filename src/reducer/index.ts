@@ -1,5 +1,8 @@
 import { combineReducers } from "redux";
+import { weatherReducer } from "../reducer/weatherReducer";
+import { locationReducer } from "./locationReducer";
 
 export const reducer = combineReducers({
-  init: () => ({}),
+  weather: weatherReducer,
+  location: locationReducer,
 });

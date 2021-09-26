@@ -1,11 +1,16 @@
+import styled from "styled-components";
 import WeatherApp from "./components/WeatherApp";
 
 function App() {
   return (
-    <div>
+    <AppContainer>
       <WeatherApp />
-    </div>
+    </AppContainer>
   );
 }
+
+const AppContainer = styled.div`
+  display: flex;
+`;
 
 export default App;
