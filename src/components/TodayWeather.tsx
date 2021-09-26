@@ -106,11 +106,6 @@ const TodayWeatherWrapper = styled.div`
 `;
 
 const TodayWeatherContainer = styled.div`
-  > img {
-    width: 202px;
-    height: 234px;
-  }
-
   > p:not(:last-child) {
     margin-top: 87px;
   }
