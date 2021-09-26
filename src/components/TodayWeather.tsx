@@ -67,10 +67,10 @@ const TodayWeather: VFC = () => {
         <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>
-          <header>
+          <TodayWeatherHeader>
             <button>Search for place</button>
             <span className="material-icons">my_location</span>
-          </header>
+          </TodayWeatherHeader>
           {getWeatherImage(todayWeatherData.weather_state_abbr)}
           <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
@@ -157,6 +157,28 @@ const MaterialIcon = styled.span`
 
 const Loading = styled.div`
   color: #fff;
+`;
+
+const TodayWeatherHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+
+  > button {
+    width: 161px;
+    height: 40px;
+    background-color: #6e707a;
+    color: #e7e7eb;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  > span {
+    width: 40px;
+    height: 40px;
+    padding-top: 8px;
+    color: #e7e7eb;
+    background-color: #6e707a;
+    border-radius: 25px;
+  }
 `;
 
 export default TodayWeather;
