@@ -67,6 +67,10 @@ const TodayWeather: VFC = () => {
         <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>
+          <header>
+            <button>Search for place</button>
+            <span className="material-icons">my_location</span>
+          </header>
           {getWeatherImage(todayWeatherData.weather_state_abbr)}
           <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
