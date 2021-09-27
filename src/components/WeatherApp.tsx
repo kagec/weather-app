@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
 import type { VFC } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import TodayWeather from "./TodayWeather";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
 import styled from "styled-components";
+import SearchLocation from "./SearchLocation";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -58,6 +59,9 @@ const ERROR_MESSAGE: { [key: number]: string } = {
 
 const WeatherApp: VFC = () => {
   const dispatch = useDispatch();
+  const isSearch: boolean = useSelector((state) => state.isSearch.isSearch);
+
+  console.log(isSearch);
 
   useEffect(() => {
     const fetchWeatherData = async (coords: Coords): Promise<void> => {
@@ -101,7 +105,7 @@ const WeatherApp: VFC = () => {
 
   return (
     <AppContainer>
-      <TodayWeather />
+      {isSearch ? <SearchLocation /> : <TodayWeather />}
     </AppContainer>
   );
 };
