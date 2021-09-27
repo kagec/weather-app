@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { VFC } from "react";
 import { RootState } from "../store";
 import styled from "styled-components";
@@ -14,6 +14,7 @@ import Sleet from "../image/Sleet.png";
 import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
+import { isSearchOn } from "../action/isSearch";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -58,6 +59,7 @@ const TodayWeather: VFC = () => {
   const [location, weather]: [Location, ConsolidatedWeather] = useSelector(
     (state: RootState) => [state.location, state.weather]
   );
+  const dispatch = useDispatch();
 
   const todayWeatherData = weather[0];
 
@@ -68,7 +70,13 @@ const TodayWeather: VFC = () => {
       ) : (
         <TodayWeatherContainer>
           <TodayWeatherHeader>
-            <button>Search for place</button>
+            <button
+              onClick={() => {
+                dispatch(isSearchOn());
+              }}
+            >
+              Search for place
+            </button>
             <span className="material-icons">my_location</span>
           </TodayWeatherHeader>
           {getWeatherImage(todayWeatherData.weather_state_abbr)}
