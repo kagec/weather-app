@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { saveWeatherData } from "../action/weather";
 import { saveLocationData } from "../action/location";
 import type { FormEvent } from "react";
+import { isSearchOff } from "../action/isSearch";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -32,7 +33,11 @@ const SearchLocation = () => {
   return (
     <div>
       <header>
-        <button>
+        <button
+          onClick={() => {
+            dispatch(isSearchOff());
+          }}
+        >
           <span className="material-icons">close</span>
         </button>
       </header>
