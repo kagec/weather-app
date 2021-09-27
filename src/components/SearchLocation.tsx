@@ -30,14 +30,21 @@ const SearchLocation = () => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        placeholder="search location"
-        onChange={(e) => setLocation(e.target.value)}
-      />
-      <input type="submit" value="Search" />
-    </form>
+    <div>
+      <header>
+        <button>
+          <span className="material-icons">close</span>
+        </button>
+      </header>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          placeholder="search location"
+          onChange={(e) => setLocation(e.target.value)}
+        />
+        <input type="submit" value="Search" />
+      </form>
+    </div>
   );
 };
 
