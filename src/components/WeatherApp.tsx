@@ -105,7 +105,9 @@ const WeatherApp: VFC = () => {
 
   return (
     <AppContainer>
-      {isSearch ? <SearchLocation /> : <TodayWeather />}
+      <MainContainer>
+        {isSearch ? <SearchLocation /> : <TodayWeather />}
+      </MainContainer>
     </AppContainer>
   );
 };
@@ -113,6 +115,12 @@ const WeatherApp: VFC = () => {
 const AppContainer = styled.div`
   position: relative;
   margin: 0 auto;
+`;
+
+const MainContainer = styled.div`
+  width: 459px;
+  height: 1023px;
+  background-color: #1e213a;
 `;
 
 export default WeatherApp;
