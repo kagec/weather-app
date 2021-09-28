@@ -79,7 +79,9 @@ const TodayWeather: VFC = () => {
             </button>
             <span className="material-icons">my_location</span>
           </TodayWeatherHeader>
-          {getWeatherImage(todayWeatherData.weather_state_abbr)}
+          <ImageContainer>
+            {getWeatherImage(todayWeatherData.weather_state_abbr)}
+          </ImageContainer>
           <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
             <span>℃</span>
@@ -118,13 +120,14 @@ const TodayWeatherWrapper = styled.div`
 `;
 
 const TodayWeatherContainer = styled.div`
-  > img {
-    margin-top: 87px;
-  }
-
   > div:not(:last-child) {
     margin-top: 87px;
   }
+`;
+
+const ImageContainer = styled.div`
+  display: inline-block;
+  height: 250px;
 `;
 
 const Temperature = styled.div`
