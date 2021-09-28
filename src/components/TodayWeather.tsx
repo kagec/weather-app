@@ -127,7 +127,7 @@ const TodayWeatherContainer = styled.div`
   }
 `;
 
-const Temperature = styled.p`
+const Temperature = styled.div`
   font-weight: 500;
   font-size: 144px;
   color: #e7e7eb;
@@ -139,19 +139,19 @@ const Temperature = styled.p`
   }
 `;
 
-const WeatherName = styled.p`
+const WeatherName = styled.div`
   color: #a09fb1;
   font-weight: 600;
   font-size: 36px;
 `;
 
-const Day = styled.p`
+const Day = styled.div`
   color: #88869d;
   font-weight: 500;
   font-size: 18px;
 `;
 
-const Place = styled.p`
+const Place = styled.div`
   color: #88869d;
   font-weight: 600;
   font-size: 18px;
