@@ -109,7 +109,7 @@ const TodayWeather: VFC = () => {
 
 const TodayWeatherWrapper = styled.div`
   position: relative;
-  padding: 50px;
+  padding: 46px;
   text-align: center;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
