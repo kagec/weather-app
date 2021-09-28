@@ -114,7 +114,7 @@ const TodayWeatherWrapper = styled.div`
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: -110px 0;
+  background-position: -110px 103px;
 `;
 
 const TodayWeatherContainer = styled.div`
