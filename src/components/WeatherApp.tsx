@@ -81,8 +81,6 @@ const WeatherApp: VFC = () => {
   const dispatch = useDispatch();
   const isSearch: boolean = useSelector((state) => state.isSearch.isSearch);
 
-  console.log(isSearch);
-
   useEffect(() => {
     const successFunc: PositionCallback = ({ coords }) => {
       fetchWeatherData(coords, dispatch);
