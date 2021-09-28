@@ -77,30 +77,36 @@ export const fetchWeatherData: (
   }
 };
 
+export const getCurrentPosition: (dispatch: Dispatch<any>) => void = (
+  dispatch
+) => {
+  const successFunc: PositionCallback = ({ coords }) => {
+    fetchWeatherData(coords, dispatch);
+  };
+
+  const errorFunc: PositionErrorCallback = (error) => {
+    alert(ERROR_MESSAGE[error.code]);
+    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      successFunc,
+      errorFunc,
+      POS_OPTION
+    );
+  } else {
+    alert("Geolocation API がサポートされていません");
+    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+  }
+};
+
 const WeatherApp: VFC = () => {
   const dispatch = useDispatch();
   const isSearch: boolean = useSelector((state) => state.isSearch.isSearch);
 
   useEffect(() => {
-    const successFunc: PositionCallback = ({ coords }) => {
-      fetchWeatherData(coords, dispatch);
-    };
-
-    const errorFunc: PositionErrorCallback = (error) => {
-      alert(ERROR_MESSAGE[error.code]);
-      fetchWeatherData(DEFAULT_LOCATION, dispatch);
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        successFunc,
-        errorFunc,
-        POS_OPTION
-      );
-    } else {
-      alert("Geolocation API がサポートされていません");
-      fetchWeatherData(DEFAULT_LOCATION, dispatch);
-    }
+    getCurrentPosition(dispatch);
   }, [dispatch]);
 
   return (
