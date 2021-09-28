@@ -122,7 +122,7 @@ const TodayWeatherContainer = styled.div`
     margin-top: 87px;
   }
 
-  > p:not(:last-child) {
+  > div:not(:last-child) {
     margin-top: 87px;
   }
 `;
