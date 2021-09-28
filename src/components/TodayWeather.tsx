@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { VFC } from "react";
-import { RootState } from "../store";
+import type { RootState } from "../store";
 import styled from "styled-components";
 import backgroundImage from "../image/Cloud-background.png";
 import Clear from "../image/Clear.png";
