@@ -37,7 +37,7 @@ const SearchLocation = () => {
 
   return (
     <SearchContainer>
-      <header>
+      <SearchHeader>
         <button
           onClick={() => {
             dispatch(isSearchOff());
@@ -45,7 +45,7 @@ const SearchLocation = () => {
         >
           <span className="material-icons">close</span>
         </button>
-      </header>
+      </SearchHeader>
       <form onSubmit={onSubmit}>
         <input
           type="text"
@@ -60,6 +60,11 @@ const SearchLocation = () => {
 
 const SearchContainer = styled.div`
   padding: 20px 46px;
+`;
+
+const SearchHeader = styled.header`
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export default SearchLocation;
