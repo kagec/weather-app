@@ -72,6 +72,10 @@ const CloseButton = styled.button`
   background-color: transparent;
   border: transparent;
   color: #e7e7eb;
+
+  > span {
+    font-size: 30px;
+  }
 `;
 
 const SearchForm = styled.form`
