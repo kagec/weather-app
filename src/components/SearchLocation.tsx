@@ -6,6 +6,7 @@ import { saveLocationData } from "../action/location";
 import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
+import searchImage from "../image/search_black_24dp.svg";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -47,7 +48,7 @@ const SearchLocation = () => {
         </CloseButton>
       </SearchHeader>
       <SearchForm onSubmit={onSubmit}>
-        <input
+        <SearchInput
           type="text"
           placeholder="search location"
           onChange={(e) => setLocation(e.target.value)}
@@ -76,6 +77,24 @@ const CloseButton = styled.button`
 const SearchForm = styled.form`
   display: flex;
   justify-content: space-between;
+`;
+
+const SearchInput = styled.input`
+  width: 268px;
+  height: 48px;
+  background-color: #1e213a;
+  border: 1px solid #e7e7eb;
+  border-radius: 0;
+
+  ::placeholder {
+    background: url(${searchImage});
+    background-repeat: no-repeat;
+    background-position: 15px 0px;
+    background-size: contain;
+    padding-left: 49px;
+    line-height: 1.5;
+    font-size: 16px;
+  }
 `;
 
 export default SearchLocation;
