@@ -53,7 +53,7 @@ const SearchLocation = () => {
           placeholder="search location"
           onChange={(e) => setLocation(e.target.value)}
         />
-        <input type="submit" value="Search" />
+        <SubmitButton type="submit">Search</SubmitButton>
       </SearchForm>
     </SearchContainer>
   );
@@ -95,6 +95,16 @@ const SearchInput = styled.input`
     line-height: 1.5;
     font-size: 16px;
   }
+`;
+
+const SubmitButton = styled.button`
+  width: 86px;
+  height: 48px;
+  background: #3c47e9;
+  font-weight: 600;
+  font-size: 16px;
+  border: 1px solid #3c47e9;
+  color: #e7e7eb;
 `;
 
 export default SearchLocation;
