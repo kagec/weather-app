@@ -60,7 +60,7 @@ const SearchLocation = () => {
 };
 
 const SearchContainer = styled.div`
-  padding: 20px 46px;
+  padding: 12px 46px;
 `;
 
 const SearchHeader = styled.header`
@@ -81,7 +81,7 @@ const CloseButton = styled.button`
 const SearchForm = styled.form`
   display: flex;
   justify-content: space-between;
-  margin-top: 45px;
+  margin-top: 35px;
 `;
 
 const SearchInput = styled.input`
