@@ -5,6 +5,7 @@ import { saveWeatherData } from "../action/weather";
 import { saveLocationData } from "../action/location";
 import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
+import styled from "styled-components";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -35,7 +36,7 @@ const SearchLocation = () => {
   };
 
   return (
-    <div>
+    <SearchContainer>
       <header>
         <button
           onClick={() => {
@@ -53,8 +54,12 @@ const SearchLocation = () => {
         />
         <input type="submit" value="Search" />
       </form>
-    </div>
+    </SearchContainer>
   );
 };
+
+const SearchContainer = styled.div`
+  padding: 20px 46px;
+`;
 
 export default SearchLocation;
