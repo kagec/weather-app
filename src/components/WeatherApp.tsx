@@ -71,7 +71,11 @@ export const fetchWeatherData: (
       `/api/location/${locationData?.data[0]?.woeid}`
     );
 
-    dispatch(saveWeatherData(weatherData.data.consolidated_weather));
+    dispatch(
+      saveWeatherData({
+        [locationData.data[0].title]: weatherData.data.consolidated_weather,
+      })
+    );
   } catch (e) {
     alert(e);
   }
