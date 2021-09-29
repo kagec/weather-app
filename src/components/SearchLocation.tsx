@@ -46,14 +46,14 @@ const SearchLocation = () => {
           <span className="material-icons">close</span>
         </CloseButton>
       </SearchHeader>
-      <form onSubmit={onSubmit}>
+      <SearchForm onSubmit={onSubmit}>
         <input
           type="text"
           placeholder="search location"
           onChange={(e) => setLocation(e.target.value)}
         />
         <input type="submit" value="Search" />
-      </form>
+      </SearchForm>
     </SearchContainer>
   );
 };
@@ -71,6 +71,11 @@ const CloseButton = styled.button`
   background-color: transparent;
   border: transparent;
   color: #e7e7eb;
+`;
+
+const SearchForm = styled.form`
+  display: flex;
+  justify-content: space-between;
 `;
 
 export default SearchLocation;
