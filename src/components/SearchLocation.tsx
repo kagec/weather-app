@@ -77,6 +77,7 @@ const CloseButton = styled.button`
 const SearchForm = styled.form`
   display: flex;
   justify-content: space-between;
+  margin-top: 45px;
 `;
 
 const SearchInput = styled.input`
