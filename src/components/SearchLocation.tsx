@@ -38,13 +38,13 @@ const SearchLocation = () => {
   return (
     <SearchContainer>
       <SearchHeader>
-        <button
+        <CloseButton
           onClick={() => {
             dispatch(isSearchOff());
           }}
         >
           <span className="material-icons">close</span>
-        </button>
+        </CloseButton>
       </SearchHeader>
       <form onSubmit={onSubmit}>
         <input
@@ -65,6 +65,12 @@ const SearchContainer = styled.div`
 const SearchHeader = styled.header`
   display: flex;
   justify-content: flex-end;
+`;
+
+const CloseButton = styled.button`
+  background-color: transparent;
+  border: transparent;
+  color: #e7e7eb;
 `;
 
 export default SearchLocation;
