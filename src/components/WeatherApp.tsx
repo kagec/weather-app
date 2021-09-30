@@ -131,6 +131,7 @@ const MainContainer = styled.div`
   width: 459px;
   height: 1023px;
   background-color: #1e213a;
+  overflow-y: auto;
 `;
 
 export default WeatherApp;
