@@ -21,6 +21,10 @@ const CitiesLogList = styled.ul`
   list-style: none;
   margin-top: 58px;
   padding: 0px;
+
+  > li:not(:first-child) {
+    margin-top: 25px;
+  }
 `;
 
 const CityButton = styled.button`
