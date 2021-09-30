@@ -8,8 +8,8 @@ const CitiesLog = () => {
 
   return (
     <CitiesLogList>
-      {cities.map((city) => (
-        <li>
+      {cities.map((city, index) => (
+        <li key={index}>
           <CityButton>{city}</CityButton>
         </li>
       ))}
