@@ -7,6 +7,7 @@ import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
 import searchImage from "../image/search_black_24dp.svg";
+import CitiesLog from "./CitiesLog";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -55,6 +56,7 @@ const SearchLocation = () => {
         />
         <SubmitButton type="submit">Search</SubmitButton>
       </SearchForm>
+      <CitiesLog />
     </SearchContainer>
   );
 };
