@@ -19,6 +19,7 @@ const CitiesLog = () => {
 const CitiesLogList = styled.ul`
   list-style: none;
   margin-top: 58px;
+  padding: 0px;
 `;
 
 export default CitiesLog;
