@@ -61,7 +61,7 @@ const TodayWeather: VFC = () => {
   );
   const dispatch = useDispatch();
 
-  const todayWeatherData = weather?.[location.title]?.[0];
+  const todayWeatherData = weather[0];
 
   return (
     <TodayWeatherWrapper>
