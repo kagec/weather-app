@@ -8,6 +8,7 @@ import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
 import searchImage from "../image/search_black_24dp.svg";
 import CitiesLog from "./CitiesLog";
+import { addCityLog } from "../action/citiesLog";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -23,6 +24,7 @@ const SearchLocation = () => {
         `/api/location/search/?query=${location}`
       );
       dispatch(saveLocationData(locationData.data[0]));
+      dispatch(addCityLog(locationData.data[0].title));
 
       const weatherData = await axios.get(
         `/api/location/${locationData?.data[0]?.woeid}`

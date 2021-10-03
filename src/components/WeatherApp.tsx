@@ -7,6 +7,7 @@ import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
 import styled from "styled-components";
 import SearchLocation from "./SearchLocation";
+import { addCityLog } from "../action/citiesLog";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -66,6 +67,7 @@ export const fetchWeatherData: (
       `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
     );
     dispatch(saveLocationData(locationData.data[0]));
+    dispatch(addCityLog(locationData.data[0].title));
 
     const weatherData = await axios.get(
       `/api/location/${locationData?.data[0]?.woeid}`
