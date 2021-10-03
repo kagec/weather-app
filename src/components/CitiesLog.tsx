@@ -3,8 +3,7 @@ import styled from "styled-components";
 import chevronRight from "../image/baseline_chevron_right_white_24dp.png";
 
 const CitiesLog = () => {
-  const weatherData = useSelector((state) => state.weather);
-  const cities = Object.keys(weatherData);
+  const cities = useSelector((state) => state.citiesLog);
 
   return (
     <CitiesLogList>
