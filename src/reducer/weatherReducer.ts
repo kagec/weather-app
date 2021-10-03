@@ -1,12 +1,8 @@
 import { WeatherAction, WEATHER_ACTION_TYPE } from "../action/weather";
 import type { ConsolidatedWeather } from "../components/WeatherApp";
 
-export interface WeatherState {
-  [key: string]: ConsolidatedWeather;
-}
-
 export const weatherReducer = (
-  state: WeatherState = {},
+  state: ConsolidatedWeather = [],
   { type, payload }: WeatherAction
 ) => {
   switch (type) {
