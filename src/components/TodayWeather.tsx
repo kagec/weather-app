@@ -13,9 +13,8 @@ import Shower from "../image/Shower.png";
 import Sleet from "../image/Sleet.png";
 import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
-import type { Location } from "./WeatherApp";
+import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { isSearchOn } from "../action/isSearch";
-import type { WeatherState } from "../reducer/weatherReducer";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -57,7 +56,7 @@ const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
 };
 
 const TodayWeather: VFC = () => {
-  const [location, weather]: [Location, WeatherState] = useSelector(
+  const [location, weather]: [Location, ConsolidatedWeather] = useSelector(
     (state: RootState) => [state.location, state.weather]
   );
   const dispatch = useDispatch();
