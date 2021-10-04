@@ -3,6 +3,7 @@ import type { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addCityLog } from "../action/citiesLog";
+import { isSearchOff } from "../action/isSearch";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
 import chevronRight from "../image/baseline_chevron_right_white_24dp.png";
@@ -37,7 +38,10 @@ const CitiesLog = () => {
       {cities.map((city, index) => (
         <li key={index}>
           <CityButton
-            onClick={() => fetchWeatherDataByCityName(city, dispatch)}
+            onClick={() => {
+              fetchWeatherDataByCityName(city, dispatch);
+              dispatch(isSearchOff());
+            }}
           >
             {city}
           </CityButton>
