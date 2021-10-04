@@ -110,7 +110,6 @@ const SubmitButton = styled(Button)`
   font-weight: 600;
   font-size: 16px;
   border: 1px solid #3c47e9;
-  color: #e7e7eb;
 `;
 
 export default SearchLocation;

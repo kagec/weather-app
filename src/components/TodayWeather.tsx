@@ -179,7 +179,6 @@ const SearchButton = styled(Button)`
   width: 161px;
   height: 40px;
   background-color: #6e707a;
-  color: #e7e7eb;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
@@ -187,7 +186,6 @@ const MyLocationButton = styled(Button)`
   width: 40px;
   height: 40px;
   padding-top: 3px;
-  color: #e7e7eb;
   background: rgba(255, 255, 255, 0.2);
   border-color: transparent;
   border-radius: 25px;

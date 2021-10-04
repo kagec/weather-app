@@ -64,7 +64,6 @@ const CitiesLogList = styled.ul`
 
 const CityButton = styled(Button)`
   width: 100%;
-  color: #e7e7eb;
   font-weight: 500;
   font-size: 16px;
   line-height: 19px;
