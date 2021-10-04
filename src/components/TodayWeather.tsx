@@ -14,6 +14,7 @@ import Sleet from "../image/Sleet.png";
 import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
+import { getCurrentPosition } from "./WeatherApp";
 import { isSearchOn } from "../action/isSearch";
 
 const changeDateFormat = (dateString: string): string => {
@@ -77,7 +78,7 @@ const TodayWeather: VFC = () => {
             >
               Search for place
             </SearchButton>
-            <MyLocationButton>
+            <MyLocationButton onClick={() => getCurrentPosition(dispatch)}>
               <span className="material-icons">my_location</span>
             </MyLocationButton>
           </TodayWeatherHeader>
