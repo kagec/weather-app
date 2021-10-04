@@ -185,7 +185,7 @@ const SearchButton = styled(Button)`
 const MyLocationButton = styled(Button)`
   width: 40px;
   height: 40px;
-  padding-top: 3px;
+  padding-top: 5px;
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.2);
   border-radius: 25px;
