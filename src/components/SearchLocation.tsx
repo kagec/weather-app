@@ -9,6 +9,7 @@ import styled from "styled-components";
 import searchImage from "../image/search_black_24dp.svg";
 import CitiesLog from "./CitiesLog";
 import { addCityLog } from "../action/citiesLog";
+import { Button } from "./styled-components/styledButton";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -68,7 +69,7 @@ const SearchHeader = styled.header`
   justify-content: flex-end;
 `;
 
-const CloseButton = styled.button`
+const CloseButton = styled(Button)`
   background-color: transparent;
   border: transparent;
   color: #e7e7eb;
@@ -102,7 +103,7 @@ const SearchInput = styled.input`
   }
 `;
 
-const SubmitButton = styled.button`
+const SubmitButton = styled(Button)`
   width: 86px;
   height: 48px;
   background: #3c47e9;

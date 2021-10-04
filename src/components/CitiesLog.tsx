@@ -7,6 +7,7 @@ import { isSearchOff } from "../action/isSearch";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
 import chevronRight from "../image/baseline_chevron_right_white_24dp.png";
+import { Button } from "./styled-components/styledButton";
 
 export const fetchWeatherDataByCityName: (
   cityName: string,
@@ -61,7 +62,7 @@ const CitiesLogList = styled.ul`
   }
 `;
 
-const CityButton = styled.button`
+const CityButton = styled(Button)`
   width: 100%;
   color: #e7e7eb;
   font-weight: 500;

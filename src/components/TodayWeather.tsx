@@ -16,6 +16,7 @@ import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
 import { isSearchOn } from "../action/isSearch";
+import { Button } from "./styled-components/styledButton";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -174,7 +175,7 @@ const TodayWeatherHeader = styled.header`
   justify-content: space-between;
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled(Button)`
   width: 161px;
   height: 40px;
   background-color: #6e707a;
@@ -182,7 +183,7 @@ const SearchButton = styled.button`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
-const MyLocationButton = styled.button`
+const MyLocationButton = styled(Button)`
   width: 40px;
   height: 40px;
   padding-top: 3px;
