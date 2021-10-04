@@ -107,11 +107,6 @@ const TodayWeather: VFC = () => {
   );
 };
 
-/* 
-  今のブランチでは天気の表示だけの予定です
-  次のブランチで検索ヘッダーを追加して、画像等の位置調整をするつもりです
-*/
-
 const TodayWeatherWrapper = styled.div`
   position: relative;
   padding: 46px;
