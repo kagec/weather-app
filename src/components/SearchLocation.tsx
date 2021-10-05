@@ -91,9 +91,11 @@ const SearchInput = styled.input`
   background-color: #1e213a;
   border: 1px solid #e7e7eb;
   border-radius: 0;
+  caret-color: #e7e7eb;
+  padding-left: 49px;
 
   ::placeholder {
-    padding-left: 49px;
+    padding-left: 5px;
     line-height: 1.5;
     font-size: 16px;
   }
