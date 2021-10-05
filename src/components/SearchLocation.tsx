@@ -6,7 +6,6 @@ import { saveLocationData } from "../action/location";
 import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
-import searchImage from "../image/search_black_24dp.svg";
 import CitiesLog from "./CitiesLog";
 import { addCityLog } from "../action/citiesLog";
 import { Button } from "./styled-components/styledButton";
@@ -48,6 +47,7 @@ const SearchLocation = () => {
         </CloseButton>
       </SearchHeader>
       <SearchForm onSubmit={onSubmit}>
+        <MaterialIcons className="material-icons">search</MaterialIcons>
         <SearchInput
           type="text"
           placeholder="search location"
@@ -93,10 +93,6 @@ const SearchInput = styled.input`
   border-radius: 0;
 
   ::placeholder {
-    background: url(${searchImage});
-    background-repeat: no-repeat;
-    background-position: 15px 0px;
-    background-size: contain;
     padding-left: 49px;
     line-height: 1.5;
     font-size: 16px;
@@ -110,6 +106,12 @@ const SubmitButton = styled(Button)`
   font-weight: 600;
   font-size: 16px;
   border: 1px solid #3c47e9;
+`;
+
+const MaterialIcons = styled.span`
+  position: absolute;
+  padding: 13px 0 0 15px;
+  color: #616475;
 `;
 
 export default SearchLocation;
