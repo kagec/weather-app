@@ -69,7 +69,7 @@ const CityButton = styled(Button)`
   line-height: 19px;
   height: 64px;
   text-align: left;
-  border: transparent;
+  border: 1px solid transparent;
   background-color: transparent;
   word-break: break-word;
 
