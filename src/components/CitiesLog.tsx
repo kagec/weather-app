@@ -74,6 +74,7 @@ const CityButton = styled(Button)`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 10px;
 
   &:hover {
     border: 1px solid #616475;
