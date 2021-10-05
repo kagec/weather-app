@@ -6,7 +6,6 @@ import { addCityLog } from "../action/citiesLog";
 import { isSearchOff } from "../action/isSearch";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
-import chevronRight from "../image/baseline_chevron_right_white_24dp.png";
 import { Button } from "./styled-components/styledButton";
 
 export const fetchWeatherDataByCityName: (
@@ -45,6 +44,7 @@ const CitiesLog = () => {
             }}
           >
             {city}
+            <span className="material-icons">chevron_right</span>
           </CityButton>
         </li>
       ))}
@@ -68,16 +68,23 @@ const CityButton = styled(Button)`
   font-size: 16px;
   line-height: 19px;
   height: 64px;
-  text-align: left;
   border: 1px solid transparent;
   background-color: transparent;
   word-break: break-word;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   &:hover {
     border: 1px solid #616475;
-    background-image: url(${chevronRight});
-    background-repeat: no-repeat;
-    background-position: right;
+
+    > span {
+      visibility: visible;
+    }
+  }
+
+  > span {
+    visibility: hidden;
   }
 `;
 
