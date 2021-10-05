@@ -100,6 +100,8 @@ const SearchInput = styled.input`
     padding-left: 5px;
     line-height: 1.5;
     font-size: 16px;
+    font-weight: 500;
+    color: #616475;
   }
 `;
 
