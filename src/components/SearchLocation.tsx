@@ -95,6 +95,7 @@ const SearchInput = styled.input`
   padding-left: 49px;
 
   ::placeholder {
+    font-family: var(--base-font);
     padding-left: 5px;
     line-height: 1.5;
     font-size: 16px;
