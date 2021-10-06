@@ -178,6 +178,8 @@ const TodayWeatherHeader = styled.header`
 const SearchButton = styled(Button)`
   width: 161px;
   height: 40px;
+  font-weight: 500;
+  font-size: 16px;
   background-color: #6e707a;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-color: transparent;
