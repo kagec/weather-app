@@ -20,8 +20,6 @@ const SearchLocation = () => {
     e.preventDefault();
 
     try {
-      dispatch(isSearchOff());
-
       const locationData = await axios.get(
         `/api/location/search/?query=${location}`
       );
@@ -32,6 +30,7 @@ const SearchLocation = () => {
         `/api/location/${locationData?.data[0]?.woeid}`
       );
       dispatch(saveWeatherData(weatherData.data.consolidated_weather));
+      dispatch(isSearchOff());
     } catch (e) {
       alert(e);
     }
