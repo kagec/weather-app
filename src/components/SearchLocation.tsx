@@ -20,6 +20,8 @@ const SearchLocation = () => {
     e.preventDefault();
 
     try {
+      dispatch(isSearchOff());
+
       const locationData = await axios.get(
         `/api/location/search/?query=${location}`
       );
