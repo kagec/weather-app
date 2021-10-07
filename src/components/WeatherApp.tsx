@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect } from "react";
-import type { VFC } from "react";
-import { useDispatch } from "react-redux";
+import type { VFC, Dispatch } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import TodayWeather from "./TodayWeather";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
 import styled from "styled-components";
+import SearchLocation from "./SearchLocation";
+import { addCityLog } from "../action/citiesLog";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -56,52 +58,64 @@ const ERROR_MESSAGE: { [key: number]: string } = {
   3: "位置情報の取得に時間がかかり過ぎてタイムアウトしました…。",
 };
 
+export const fetchWeatherData: (
+  coords: Coords,
+  dispatch: Dispatch<any>
+) => Promise<void> = async (coords, dispatch) => {
+  try {
+    const locationData = await axios.get(
+      `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
+    );
+    dispatch(saveLocationData(locationData.data[0]));
+    dispatch(addCityLog(locationData.data[0].title));
+
+    const weatherData = await axios.get(
+      `/api/location/${locationData?.data[0]?.woeid}`
+    );
+
+    dispatch(saveWeatherData(weatherData.data.consolidated_weather));
+  } catch (e) {
+    alert(e);
+  }
+};
+
+export const getCurrentPosition: (dispatch: Dispatch<any>) => void = (
+  dispatch
+) => {
+  const successFunc: PositionCallback = ({ coords }) => {
+    fetchWeatherData(coords, dispatch);
+  };
+
+  const errorFunc: PositionErrorCallback = (error) => {
+    alert(ERROR_MESSAGE[error.code]);
+    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+  };
+
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      successFunc,
+      errorFunc,
+      POS_OPTION
+    );
+  } else {
+    alert("Geolocation API がサポートされていません");
+    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+  }
+};
+
 const WeatherApp: VFC = () => {
   const dispatch = useDispatch();
+  const isSearch: boolean = useSelector((state) => state.isSearch.isSearch);
 
   useEffect(() => {
-    const fetchWeatherData = async (coords: Coords): Promise<void> => {
-      try {
-        const locationData = await axios.get(
-          `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
-        );
-
-        dispatch(saveLocationData(locationData.data[0]));
-
-        const weatherData = await axios.get(
-          `/api/location/${locationData?.data[0]?.woeid}`
-        );
-
-        dispatch(saveWeatherData(weatherData.data.consolidated_weather));
-      } catch (e) {
-        alert(e);
-      }
-    };
-
-    const successFunc: PositionCallback = ({ coords }) => {
-      fetchWeatherData(coords);
-    };
-
-    const errorFunc: PositionErrorCallback = (error) => {
-      alert(ERROR_MESSAGE[error.code]);
-      fetchWeatherData(DEFAULT_LOCATION);
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        successFunc,
-        errorFunc,
-        POS_OPTION
-      );
-    } else {
-      alert("Geolocation API がサポートされていません");
-      fetchWeatherData(DEFAULT_LOCATION);
-    }
+    getCurrentPosition(dispatch);
   }, [dispatch]);
 
   return (
     <AppContainer>
-      <TodayWeather />
+      <MainContainer>
+        {isSearch ? <SearchLocation /> : <TodayWeather />}
+      </MainContainer>
     </AppContainer>
   );
 };
@@ -109,6 +123,13 @@ const WeatherApp: VFC = () => {
 const AppContainer = styled.div`
   position: relative;
   margin: 0 auto;
+`;
+
+const MainContainer = styled.div`
+  width: 459px;
+  height: 1023px;
+  background-color: #1e213a;
+  overflow-y: auto;
 `;
 
 export default WeatherApp;

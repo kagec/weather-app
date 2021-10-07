@@ -1,6 +1,6 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { VFC } from "react";
-import { RootState } from "../store";
+import type { RootState } from "../store";
 import styled from "styled-components";
 import backgroundImage from "../image/Cloud-background.png";
 import Clear from "../image/Clear.png";
@@ -14,6 +14,9 @@ import Sleet from "../image/Sleet.png";
 import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
+import { getCurrentPosition } from "./WeatherApp";
+import { isSearchOn } from "../action/isSearch";
+import { Button } from "./styled-components/styledButton";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -58,6 +61,7 @@ const TodayWeather: VFC = () => {
   const [location, weather]: [Location, ConsolidatedWeather] = useSelector(
     (state: RootState) => [state.location, state.weather]
   );
+  const dispatch = useDispatch();
 
   const todayWeatherData = weather[0];
 
@@ -67,7 +71,21 @@ const TodayWeather: VFC = () => {
         <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>
-          {getWeatherImage(todayWeatherData.weather_state_abbr)}
+          <TodayWeatherHeader>
+            <SearchButton
+              onClick={() => {
+                dispatch(isSearchOn());
+              }}
+            >
+              Search for place
+            </SearchButton>
+            <MyLocationButton onClick={() => getCurrentPosition(dispatch)}>
+              <span className="material-icons">my_location</span>
+            </MyLocationButton>
+          </TodayWeatherHeader>
+          <ImageContainer>
+            {getWeatherImage(todayWeatherData.weather_state_abbr)}
+          </ImageContainer>
           <Temperature>
             {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
             <span>℃</span>
@@ -90,31 +108,28 @@ const TodayWeather: VFC = () => {
   );
 };
 
-/* 
-  今のブランチでは天気の表示だけの予定です
-  次のブランチで検索ヘッダーを追加して、画像等の位置調整をするつもりです
-*/
-
 const TodayWeatherWrapper = styled.div`
   position: relative;
-  width: 459px;
-  height: 1023px;
-  padding: 50px;
-  background-color: #1e213a;
+  padding: 46px;
   text-align: center;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
   background-size: auto;
-  background-position: -110px 0;
+  background-position: -110px 103px;
 `;
 
 const TodayWeatherContainer = styled.div`
-  > p:not(:last-child) {
+  > div:not(:last-child) {
     margin-top: 87px;
   }
 `;
 
-const Temperature = styled.p`
+const ImageContainer = styled.div`
+  display: inline-block;
+  height: 250px;
+`;
+
+const Temperature = styled.div`
   font-weight: 500;
   font-size: 144px;
   color: #e7e7eb;
@@ -126,19 +141,19 @@ const Temperature = styled.p`
   }
 `;
 
-const WeatherName = styled.p`
+const WeatherName = styled.div`
   color: #a09fb1;
   font-weight: 600;
   font-size: 36px;
 `;
 
-const Day = styled.p`
+const Day = styled.div`
   color: #88869d;
   font-weight: 500;
   font-size: 18px;
 `;
 
-const Place = styled.p`
+const Place = styled.div`
   color: #88869d;
   font-weight: 600;
   font-size: 18px;
@@ -153,6 +168,31 @@ const MaterialIcon = styled.span`
 
 const Loading = styled.div`
   color: #fff;
+`;
+
+const TodayWeatherHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const SearchButton = styled(Button)`
+  width: 161px;
+  height: 40px;
+  font-weight: 500;
+  font-size: 16px;
+  background-color: #6e707a;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-color: transparent;
+`;
+
+const MyLocationButton = styled(Button)`
+  width: 40px;
+  height: 40px;
+  padding-top: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: transparent;
+  border-radius: 25px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export default TodayWeather;

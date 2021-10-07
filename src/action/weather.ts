@@ -1,4 +1,4 @@
-import type { ConsolidatedWeather } from "../components/WeatherApp";
+import { ConsolidatedWeather } from "../components/WeatherApp";
 
 export type WeatherAction = ReturnType<typeof saveWeatherData>;
 
