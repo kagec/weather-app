@@ -22,7 +22,7 @@ const SearchLocation = () => {
 
     if (!trimmed) {
       alert("都市名を入力してください");
-      setLocation("to");
+      setLocation("");
       return;
     }
 
