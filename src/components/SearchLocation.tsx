@@ -59,6 +59,7 @@ const SearchLocation = () => {
         <SearchInput
           type="text"
           placeholder="search location"
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
         <SubmitButton type="submit">Search</SubmitButton>
