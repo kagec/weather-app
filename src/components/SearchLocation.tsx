@@ -18,6 +18,13 @@ const SearchLocation = () => {
     e
   ) => {
     e.preventDefault();
+    const trimmed = location.trim();
+
+    if (!trimmed) {
+      alert("都市名を入力してください");
+      setLocation("to");
+      return;
+    }
 
     try {
       const locationData = await axios.get(
