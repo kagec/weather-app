@@ -5,7 +5,6 @@ import type { ConsolidatedWeather, Location } from "../components/WeatherApp";
 export interface EntitiesState {
   weathers: {
     byWoeid: { [key: number]: ConsolidatedWeather };
-    woeids: number[];
   };
   locations: {
     byWoeid: { [key: number]: Location };
@@ -15,7 +14,7 @@ export interface EntitiesState {
 }
 
 const initialState: EntitiesState = {
-  weathers: { byWoeid: {}, woeids: [] },
+  weathers: { byWoeid: {} },
   locations: { byWoeid: {}, logs: {} },
   selectedWoeid: 0,
 };
@@ -35,7 +34,6 @@ export const entitiesReducer = (
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
-          woeids: [...state.weathers.woeids],
         },
       };
     }
@@ -52,7 +50,6 @@ export const entitiesReducer = (
             ...state.weathers.byWoeid,
             [payload.woeid]: payload.weatherData,
           },
-          woeids: [...state.weathers.woeids, payload.woeid],
         },
       };
     }
@@ -65,7 +62,6 @@ export const entitiesReducer = (
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
-          woeids: [...state.weathers.woeids],
         },
         selectedWoeid: action.payload,
       };
@@ -79,7 +75,6 @@ export const entitiesReducer = (
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
-          woeids: [...state.weathers.woeids],
         },
       };
   }
