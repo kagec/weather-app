@@ -20,6 +20,17 @@ export const entitiesReducer = (
   action: EntitiesAction
 ) => {
   switch (action.type) {
+    case ENTITIES_ACTION_TYPE.SAVE_LOCATION_DATA: {
+      const payload = action.payload;
+      return {
+        ...state,
+        locations: {
+          byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
+          woeids: [...state.locations.woeids, payload.woeid],
+        },
+      };
+    }
+
     default:
       return state;
   }
