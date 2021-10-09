@@ -33,12 +33,20 @@ export const entitiesReducer = (
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
           woeids: [...state.locations.woeids, payload.woeid],
         },
+        weathers: {
+          byWoeid: { ...state.weathers.byWoeid },
+          woeids: [...state.weathers.woeids],
+        },
       };
     }
     case ENTITIES_ACTION_TYPE.SAVE_WEATHER_DATA: {
       const payload = action.payload;
       return {
         ...state,
+        locations: {
+          byWoeid: { ...state.locations.byWoeid },
+          woeids: [...state.locations.woeids],
+        },
         weathers: {
           byWoeid: {
             ...state.weathers.byWoeid,
