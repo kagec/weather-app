@@ -3,11 +3,10 @@ import { useEffect } from "react";
 import type { VFC, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TodayWeather from "./TodayWeather";
-import { saveLocationData } from "../action/location";
-import { saveWeatherData } from "../action/weather";
 import styled from "styled-components";
 import SearchLocation from "./SearchLocation";
 import { addCityLog } from "../action/citiesLog";
+import { saveLocationData, saveWeatherData } from "../action/entities";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
