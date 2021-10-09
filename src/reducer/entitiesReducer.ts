@@ -56,6 +56,21 @@ export const entitiesReducer = (
         },
       };
     }
+    case ENTITIES_ACTION_TYPE.SELECT_CURRENT_WOEID: {
+      return {
+        ...state,
+        locations: {
+          byWoeid: { ...state.locations.byWoeid },
+          woeids: [...state.locations.woeids],
+          selectedWoeid: action.payload,
+        },
+        weathers: {
+          byWoeid: { ...state.weathers.byWoeid },
+          woeids: [...state.weathers.woeids],
+          selectedWoeid: action.payload,
+        },
+      };
+    }
     default:
       return state;
   }
