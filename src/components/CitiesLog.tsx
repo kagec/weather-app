@@ -30,8 +30,11 @@ export const fetchWeatherDataByCityName: (
 };
 
 const CitiesLog = () => {
-  const cities = useSelector((state) => state.citiesLog);
+  const citiesLogs: { [key: string]: number } = useSelector(
+    (state) => state.entities.locations.logs
+  );
   const dispatch = useDispatch();
+  const cities = Object.keys(citiesLogs);
 
   return (
     <CitiesLogList>
