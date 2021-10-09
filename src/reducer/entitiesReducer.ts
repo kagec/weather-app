@@ -30,7 +30,19 @@ export const entitiesReducer = (
         },
       };
     }
-
+    case ENTITIES_ACTION_TYPE.SAVE_WEATHER_DATA: {
+      const payload = action.payload;
+      return {
+        ...state,
+        weathers: {
+          byWoeid: {
+            ...state.weathers.byWoeid,
+            [payload.woeid]: payload.weatherData,
+          },
+          woeids: [...state.weathers.woeids, payload.woeid],
+        },
+      };
+    }
     default:
       return state;
   }
