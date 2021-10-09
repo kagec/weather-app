@@ -18,6 +18,13 @@ const SearchLocation = () => {
     e
   ) => {
     e.preventDefault();
+    const trimmed = location.trim();
+
+    if (!trimmed) {
+      alert("都市名を入力してください");
+      setLocation("");
+      return;
+    }
 
     try {
       const locationData = await axios.get(
@@ -30,6 +37,7 @@ const SearchLocation = () => {
         `/api/location/${locationData?.data[0]?.woeid}`
       );
       dispatch(saveWeatherData(weatherData.data.consolidated_weather));
+      dispatch(isSearchOff());
     } catch (e) {
       alert(e);
     }
@@ -51,6 +59,7 @@ const SearchLocation = () => {
         <SearchInput
           type="text"
           placeholder="search location"
+          value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
         <SubmitButton type="submit">Search</SubmitButton>
