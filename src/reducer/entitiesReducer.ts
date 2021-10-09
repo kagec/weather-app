@@ -32,10 +32,12 @@ export const entitiesReducer = (
         locations: {
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
           woeids: [...state.locations.woeids, payload.woeid],
+          selectedWoeid: state.locations.selectedWoeid,
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
           woeids: [...state.weathers.woeids],
+          selectedWoeid: state.weathers.selectedWoeid,
         },
       };
     }
@@ -46,6 +48,7 @@ export const entitiesReducer = (
         locations: {
           byWoeid: { ...state.locations.byWoeid },
           woeids: [...state.locations.woeids],
+          selectedWoeid: state.locations.selectedWoeid,
         },
         weathers: {
           byWoeid: {
@@ -53,6 +56,7 @@ export const entitiesReducer = (
             [payload.woeid]: payload.weatherData,
           },
           woeids: [...state.weathers.woeids, payload.woeid],
+          selectedWoeid: state.weathers.selectedWoeid,
         },
       };
     }
