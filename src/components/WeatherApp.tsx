@@ -6,7 +6,11 @@ import TodayWeather from "./TodayWeather";
 import styled from "styled-components";
 import SearchLocation from "./SearchLocation";
 import { addCityLog } from "../action/citiesLog";
-import { saveLocationData, saveWeatherData } from "../action/entities";
+import {
+  saveLocationData,
+  saveWeatherData,
+  selectCurrentWoeid,
+} from "../action/entities";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -78,6 +82,7 @@ export const fetchWeatherData: (
         locationData.data[0].woeid
       )
     );
+    dispatch(selectCurrentWoeid(locationData.data[0].woeid));
   } catch (e) {
     alert(e);
   }
