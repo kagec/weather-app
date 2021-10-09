@@ -14,7 +14,10 @@ export const saveLocationData = (locationData: Location) => ({
   payload: locationData,
 });
 
-export const saveWeatherData = (weatherData: ConsolidatedWeather) => ({
+export const saveWeatherData = (
+  weatherData: ConsolidatedWeather,
+  woeid: number
+) => ({
   type: ENTITIES_ACTION_TYPE.SAVE_WEATHER_DATA,
-  payload: weatherData,
+  payload: { weatherData, woeid },
 });
