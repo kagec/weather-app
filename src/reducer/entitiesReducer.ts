@@ -72,6 +72,18 @@ export const entitiesReducer = (
       };
     }
     default:
-      return state;
+      return {
+        ...state,
+        locations: {
+          byWoeid: { ...state.locations.byWoeid },
+          woeids: [...state.locations.woeids],
+          selectedWoeid: state.locations.selectedWoeid,
+        },
+        weathers: {
+          byWoeid: { ...state.weathers.byWoeid },
+          woeids: [...state.weathers.woeids],
+          selectedWoeid: state.weathers.selectedWoeid,
+        },
+      };
   }
 };
