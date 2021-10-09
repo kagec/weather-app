@@ -7,7 +7,11 @@ import styled from "styled-components";
 import CitiesLog from "./CitiesLog";
 import { addCityLog } from "../action/citiesLog";
 import { Button } from "./styled-components/styledButton";
-import { saveLocationData, saveWeatherData } from "../action/entities";
+import {
+  saveLocationData,
+  saveWeatherData,
+  selectCurrentWoeid,
+} from "../action/entities";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -41,6 +45,7 @@ const SearchLocation = () => {
           locationData.data[0].woeid
         )
       );
+      dispatch(selectCurrentWoeid(locationData.data[0].woeid));
       dispatch(isSearchOff());
     } catch (e) {
       alert(e);
