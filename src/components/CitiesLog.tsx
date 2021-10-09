@@ -3,6 +3,7 @@ import type { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { addCityLog } from "../action/citiesLog";
+import { selectCurrentWoeid } from "../action/entities";
 import { isSearchOff } from "../action/isSearch";
 import { saveLocationData } from "../action/location";
 import { saveWeatherData } from "../action/weather";
@@ -42,7 +43,7 @@ const CitiesLog = () => {
         <li key={index}>
           <CityButton
             onClick={() => {
-              fetchWeatherDataByCityName(city, dispatch);
+              dispatch(selectCurrentWoeid(citiesLogs[city]));
               dispatch(isSearchOff());
             }}
           >
