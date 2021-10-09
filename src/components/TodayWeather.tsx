@@ -58,16 +58,22 @@ const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
 };
 
 const TodayWeather: VFC = () => {
-  const [location, weather]: [Location, ConsolidatedWeather] = useSelector(
-    (state: RootState) => [state.location, state.weather]
-  );
+  const [locations, weathers, selectedWoeid]: [
+    locations: { [key: number]: Location },
+    weathers: { [key: number]: ConsolidatedWeather },
+    selectedWoeid: number
+  ] = useSelector((state) => [
+    state.entities.locations.byWoeid,
+    state.entities.weathers.byWoeid,
+    state.entities.selectedWoeid,
+  ]);
   const dispatch = useDispatch();
-
-  const todayWeatherData = weather[0];
+  const location = locations?.[selectedWoeid];
+  const todayWeatherData = weathers?.[selectedWoeid]?.[0];
 
   return (
     <TodayWeatherWrapper>
-      {!todayWeatherData ? (
+      {!todayWeatherData || !location ? (
         <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>
