@@ -6,13 +6,18 @@ export interface EntitiesState {
   weathers: {
     byWoeid: { [key: number]: ConsolidatedWeather };
     woeids: number[];
+    selectedWoeid: number;
   };
-  locations: { byWoeid: { [key: number]: Location }; woeids: number[] };
+  locations: {
+    byWoeid: { [key: number]: Location };
+    woeids: number[];
+    selectedWoeid: number;
+  };
 }
 
 const initialState: EntitiesState = {
-  weathers: { byWoeid: {}, woeids: [] },
-  locations: { byWoeid: {}, woeids: [] },
+  weathers: { byWoeid: {}, woeids: [], selectedWoeid: 0 },
+  locations: { byWoeid: {}, woeids: [], selectedWoeid: 0 },
 };
 
 export const entitiesReducer = (
