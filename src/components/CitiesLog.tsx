@@ -3,25 +3,29 @@ import styled from "styled-components";
 import { selectCurrentWoeid } from "../action/entities";
 import { isSearchOff } from "../action/isSearch";
 import { Button } from "./styled-components/styledButton";
+import type { Location } from "./WeatherApp";
 
 const CitiesLog = () => {
-  const citiesLogs: { [key: string]: number } = useSelector(
-    (state) => state.entities.locations.logs
-  );
+  const [location, woeids]: [
+    location: { [key: number]: Location },
+    woeids: number[]
+  ] = useSelector((state) => [
+    state.entities.locations.byWoeid,
+    state.entities.locations.woeids,
+  ]);
   const dispatch = useDispatch();
-  const cities = Object.keys(citiesLogs);
 
   return (
     <CitiesLogList>
-      {cities.map((city, index) => (
+      {woeids.map((id, index) => (
         <li key={index}>
           <CityButton
             onClick={() => {
-              dispatch(selectCurrentWoeid(citiesLogs[city]));
+              dispatch(selectCurrentWoeid(id));
               dispatch(isSearchOff());
             }}
           >
-            {city}
+            {location[id].title}
             <span className="material-icons">chevron_right</span>
           </CityButton>
         </li>
