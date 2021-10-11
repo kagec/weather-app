@@ -8,14 +8,14 @@ export interface EntitiesState {
   };
   locations: {
     byWoeid: { [key: number]: Location };
-    logs: { [key: string]: number };
+    woeids: number[];
   };
   selectedWoeid: number;
 }
 
 const initialState: EntitiesState = {
   weathers: { byWoeid: {} },
-  locations: { byWoeid: {}, logs: {} },
+  locations: { byWoeid: {}, woeids: [] },
   selectedWoeid: 0,
 };
 
@@ -30,7 +30,7 @@ export const entitiesReducer = (
         ...state,
         locations: {
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
-          logs: { ...state.locations.logs, [payload.title]: payload.woeid },
+          woeids: [...state.locations.woeids, payload.woeid],
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
@@ -43,7 +43,7 @@ export const entitiesReducer = (
         ...state,
         locations: {
           byWoeid: { ...state.locations.byWoeid },
-          logs: { ...state.locations.logs },
+          woeids: [...state.locations.woeids],
         },
         weathers: {
           byWoeid: {
@@ -58,7 +58,7 @@ export const entitiesReducer = (
         ...state,
         locations: {
           byWoeid: { ...state.locations.byWoeid },
-          logs: { ...state.locations.logs },
+          woeids: [...state.locations.woeids],
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
@@ -71,7 +71,7 @@ export const entitiesReducer = (
         ...state,
         locations: {
           byWoeid: { ...state.locations.byWoeid },
-          logs: { ...state.locations.logs },
+          woeids: [...state.locations.woeids],
         },
         weathers: {
           byWoeid: { ...state.weathers.byWoeid },
