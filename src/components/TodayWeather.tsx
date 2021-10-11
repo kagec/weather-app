@@ -64,7 +64,7 @@ const TodayWeather: VFC = () => {
   ] = useSelector((state) => [
     state.entities.locations.byWoeid,
     state.entities.weathers.byWoeid,
-    state.entities.selectedWoeid,
+    state.entities.locations.selectedWoeid,
   ]);
   const dispatch = useDispatch();
   const location = locations?.[selectedWoeid];
