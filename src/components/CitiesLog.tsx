@@ -17,8 +17,8 @@ const CitiesLog = () => {
 
   return (
     <CitiesLogList>
-      {woeids.map((id, index) => (
-        <li key={index}>
+      {woeids.map((id) => (
+        <li key={id}>
           <CityButton
             onClick={() => {
               dispatch(selectCurrentWoeid(id));
