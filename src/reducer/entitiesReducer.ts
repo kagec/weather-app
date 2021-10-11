@@ -29,7 +29,9 @@ export const entitiesReducer = (
         ...state,
         locations: {
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
-          woeids: [...state.locations.woeids, payload.woeid],
+          woeids: [
+            ...Array.from(new Set([...state.locations.woeids, payload.woeid])),
+          ],
           selectedWoeid: state.locations.selectedWoeid,
         },
         weathers: {
