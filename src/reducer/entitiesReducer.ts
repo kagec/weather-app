@@ -28,14 +28,11 @@ export const entitiesReducer = (
       return {
         ...state,
         locations: {
+          ...state.locations,
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
           woeids: [
             ...Array.from(new Set([...state.locations.woeids, payload.woeid])),
           ],
-          selectedWoeid: state.locations.selectedWoeid,
-        },
-        weathers: {
-          byWoeid: { ...state.weathers.byWoeid },
         },
       };
     }
@@ -43,11 +40,6 @@ export const entitiesReducer = (
       const payload = action.payload;
       return {
         ...state,
-        locations: {
-          byWoeid: { ...state.locations.byWoeid },
-          woeids: [...state.locations.woeids],
-          selectedWoeid: state.locations.selectedWoeid,
-        },
         weathers: {
           byWoeid: {
             ...state.weathers.byWoeid,
@@ -60,26 +52,12 @@ export const entitiesReducer = (
       return {
         ...state,
         locations: {
-          byWoeid: { ...state.locations.byWoeid },
-          woeids: [...state.locations.woeids],
+          ...state.locations,
           selectedWoeid: action.payload,
-        },
-        weathers: {
-          byWoeid: { ...state.weathers.byWoeid },
         },
       };
     }
     default:
-      return {
-        ...state,
-        locations: {
-          byWoeid: { ...state.locations.byWoeid },
-          woeids: [...state.locations.woeids],
-          selectedWoeid: state.locations.selectedWoeid,
-        },
-        weathers: {
-          byWoeid: { ...state.weathers.byWoeid },
-        },
-      };
+      return state;
   }
 };
