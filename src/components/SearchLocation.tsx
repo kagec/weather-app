@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
@@ -15,6 +15,7 @@ import {
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
   const dispatch = useDispatch();
+  const woeids = useSelector((state) => state.entities.locations.woeids);
 
   const onSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void> = async (
     e
@@ -32,17 +33,20 @@ const SearchLocation = () => {
       const locationData = await axios.get(
         `/api/location/search/?query=${location}`
       );
-      dispatch(saveLocationData(locationData.data[0]));
 
-      const weatherData = await axios.get(
-        `/api/location/${locationData?.data[0]?.woeid}`
-      );
-      dispatch(
-        saveWeatherData(
-          weatherData.data.consolidated_weather,
-          locationData.data[0].woeid
-        )
-      );
+      if (!woeids.includes(locationData.data[0].woeid)) {
+        dispatch(saveLocationData(locationData.data[0]));
+
+        const weatherData = await axios.get(
+          `/api/location/${locationData?.data[0]?.woeid}`
+        );
+        dispatch(
+          saveWeatherData(
+            weatherData.data.consolidated_weather,
+            locationData.data[0].woeid
+          )
+        );
+      }
       dispatch(selectCurrentWoeid(locationData.data[0].woeid));
       dispatch(isSearchOff());
     } catch (e) {
