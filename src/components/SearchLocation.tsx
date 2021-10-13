@@ -5,7 +5,6 @@ import type { FormEvent } from "react";
 import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
 import CitiesLog from "./CitiesLog";
-import { addCityLog } from "../action/citiesLog";
 import { Button } from "./styled-components/styledButton";
 import {
   saveLocationData,
@@ -34,7 +33,6 @@ const SearchLocation = () => {
         `/api/location/search/?query=${location}`
       );
       dispatch(saveLocationData(locationData.data[0]));
-      dispatch(addCityLog(locationData.data[0].title));
 
       const weatherData = await axios.get(
         `/api/location/${locationData?.data[0]?.woeid}`
