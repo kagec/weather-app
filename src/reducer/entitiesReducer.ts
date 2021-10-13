@@ -30,9 +30,7 @@ export const entitiesReducer = (
         locations: {
           ...state.locations,
           byWoeid: { ...state.locations.byWoeid, [payload.woeid]: payload },
-          woeids: [
-            ...Array.from(new Set([...state.locations.woeids, payload.woeid])),
-          ],
+          woeids: [...state.locations.woeids, payload.woeid],
         },
       };
     }
