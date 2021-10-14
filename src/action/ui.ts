@@ -9,10 +9,8 @@ export const UI_ACTION_TYPE = {
 
 export const isSearchOn = () => ({
   type: UI_ACTION_TYPE.IS_SEARCH_ON,
-  payload: true,
 });
 
 export const isSearchOff = () => ({
   type: UI_ACTION_TYPE.IS_SEARCH_OFF,
-  payload: false,
 });

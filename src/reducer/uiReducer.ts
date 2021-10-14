@@ -9,15 +9,12 @@ const initialState: UIState = {
   isShowSearch: false,
 };
 
-export const uiReducer = (
-  state = initialState,
-  { type, payload }: UIAction
-) => {
+export const uiReducer = (state = initialState, { type }: UIAction) => {
   switch (type) {
     case UI_ACTION_TYPE.IS_SEARCH_ON:
-      return { ...state, isShowSearch: payload };
+      return { ...state, isShowSearch: true };
     case UI_ACTION_TYPE.IS_SEARCH_OFF:
-      return { ...state, isShowSearch: payload };
+      return { ...state, isShowSearch: false };
     default:
       return state;
   }
