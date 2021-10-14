@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import type { FormEvent } from "react";
-import { isSearchOff } from "../action/isSearch";
+import { isSearchOff } from "../action/ui";
 import styled from "styled-components";
 import CitiesLog from "./CitiesLog";
 import { Button } from "./styled-components/styledButton";

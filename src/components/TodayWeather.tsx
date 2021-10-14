@@ -14,7 +14,7 @@ import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
-import { isSearchOn } from "../action/isSearch";
+import { isSearchOn } from "../action/ui";
 import { Button } from "./styled-components/styledButton";
 
 const changeDateFormat = (dateString: string): string => {

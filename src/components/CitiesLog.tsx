@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { selectCurrentWoeid } from "../action/entities";
-import { isSearchOff } from "../action/isSearch";
+import { isSearchOff } from "../action/ui";
 import { Button } from "./styled-components/styledButton";
 import type { Location } from "./WeatherApp";
 
