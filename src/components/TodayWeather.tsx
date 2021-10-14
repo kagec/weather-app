@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import type { VFC } from "react";
-import type { RootState } from "../store";
 import styled from "styled-components";
 import backgroundImage from "../image/Cloud-background.png";
 import Clear from "../image/Clear.png";
@@ -58,16 +57,22 @@ const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
 };
 
 const TodayWeather: VFC = () => {
-  const [location, weather]: [Location, ConsolidatedWeather] = useSelector(
-    (state: RootState) => [state.location, state.weather]
-  );
+  const [locations, weathers, selectedWoeid]: [
+    locations: { [key: number]: Location },
+    weathers: { [key: number]: ConsolidatedWeather },
+    selectedWoeid: number
+  ] = useSelector((state) => [
+    state.entities.locations.byWoeid,
+    state.entities.weathers.byWoeid,
+    state.entities.locations.selectedWoeid,
+  ]);
   const dispatch = useDispatch();
-
-  const todayWeatherData = weather[0];
+  const location = locations?.[selectedWoeid];
+  const todayWeatherData = weathers?.[selectedWoeid]?.[0];
 
   return (
     <TodayWeatherWrapper>
-      {!todayWeatherData ? (
+      {!todayWeatherData || !location ? (
         <Loading>Loading...</Loading>
       ) : (
         <TodayWeatherContainer>

@@ -3,11 +3,13 @@ import { useEffect } from "react";
 import type { VFC, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TodayWeather from "./TodayWeather";
-import { saveLocationData } from "../action/location";
-import { saveWeatherData } from "../action/weather";
 import styled from "styled-components";
 import SearchLocation from "./SearchLocation";
-import { addCityLog } from "../action/citiesLog";
+import {
+  saveLocationData,
+  saveWeatherData,
+  selectCurrentWoeid,
+} from "../action/entities";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -67,13 +69,18 @@ export const fetchWeatherData: (
       `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
     );
     dispatch(saveLocationData(locationData.data[0]));
-    dispatch(addCityLog(locationData.data[0].title));
 
     const weatherData = await axios.get(
       `/api/location/${locationData?.data[0]?.woeid}`
     );
 
-    dispatch(saveWeatherData(weatherData.data.consolidated_weather));
+    dispatch(
+      saveWeatherData(
+        weatherData.data.consolidated_weather,
+        locationData.data[0].woeid
+      )
+    );
+    dispatch(selectCurrentWoeid(locationData.data[0].woeid));
   } catch (e) {
     alert(e);
   }

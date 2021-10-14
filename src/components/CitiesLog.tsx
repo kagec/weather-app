@@ -1,49 +1,31 @@
-import axios from "axios";
-import type { Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { addCityLog } from "../action/citiesLog";
+import { selectCurrentWoeid } from "../action/entities";
 import { isSearchOff } from "../action/isSearch";
-import { saveLocationData } from "../action/location";
-import { saveWeatherData } from "../action/weather";
 import { Button } from "./styled-components/styledButton";
-
-export const fetchWeatherDataByCityName: (
-  cityName: string,
-  dispatch: Dispatch<any>
-) => Promise<void> = async (cityName, dispatch) => {
-  try {
-    const locationData = await axios.get(
-      `/api/location/search/?query=${cityName}`
-    );
-    dispatch(saveLocationData(locationData.data[0]));
-    dispatch(addCityLog(locationData.data[0].title));
-
-    const weatherData = await axios.get(
-      `/api/location/${locationData?.data[0]?.woeid}`
-    );
-
-    dispatch(saveWeatherData(weatherData.data.consolidated_weather));
-  } catch (e) {
-    alert(e);
-  }
-};
+import type { Location } from "./WeatherApp";
 
 const CitiesLog = () => {
-  const cities = useSelector((state) => state.citiesLog);
+  const [location, woeids]: [
+    location: { [key: number]: Location },
+    woeids: number[]
+  ] = useSelector((state) => [
+    state.entities.locations.byWoeid,
+    state.entities.locations.woeids,
+  ]);
   const dispatch = useDispatch();
 
   return (
     <CitiesLogList>
-      {cities.map((city, index) => (
-        <li key={index}>
+      {woeids.map((id) => (
+        <li key={id}>
           <CityButton
             onClick={() => {
-              fetchWeatherDataByCityName(city, dispatch);
+              dispatch(selectCurrentWoeid(id));
               dispatch(isSearchOff());
             }}
           >
-            {city}
+            {location[id].title}
             <span className="material-icons">chevron_right</span>
           </CityButton>
         </li>
