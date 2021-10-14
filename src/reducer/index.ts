@@ -1,9 +1,8 @@
 import { combineReducers } from "redux";
-
-import { isSearchReducer } from "./isSearchReducer";
+import { uiReducer } from "./uiReducer";
 import { entitiesReducer } from "./entitiesReducer";
 
 export const reducer = combineReducers({
-  isSearch: isSearchReducer,
   entities: entitiesReducer,
+  ui: uiReducer,
 });
