@@ -15,7 +15,7 @@ import {
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
   const dispatch = useDispatch();
-  const woeids = useSelector((state) => state.entities.locations.woeids);
+  const byWoeid = useSelector((state) => state.entities.locations.byWoeid);
 
   const onSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void> = async (
     e
@@ -34,7 +34,7 @@ const SearchLocation = () => {
         `/api/location/search/?query=${location}`
       );
 
-      if (!woeids.includes(locationData.data[0].woeid)) {
+      if (!byWoeid[locationData.data[0].woeid]) {
         dispatch(saveLocationData(locationData.data[0]));
 
         const weatherData = await axios.get(
