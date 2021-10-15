@@ -62,12 +62,20 @@ const ERROR_MESSAGE: { [key: number]: string } = {
 
 export const fetchWeatherData: (
   coords: Coords,
+  byWoeid: { [key: number]: Location } | null,
   dispatch: Dispatch<any>
-) => Promise<void> = async (coords, dispatch) => {
+) => Promise<void> = async (coords, byWoeid, dispatch) => {
   try {
     const locationData = await axios.get(
       `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
     );
+
+    if (byWoeid !== null) {
+      if (byWoeid[locationData.data[0].woeid]) {
+        dispatch(selectCurrentWoeid(locationData.data[0].woeid));
+        return;
+      }
+    }
     dispatch(saveLocationData(locationData.data[0]));
 
     const weatherData = await axios.get(
