@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import type { FormEvent } from "react";
-import { isSearchOff } from "../action/isSearch";
 import styled from "styled-components";
 import CitiesLog from "./CitiesLog";
 import { Button } from "./styled-components/styledButton";
@@ -11,6 +10,7 @@ import {
   saveWeatherData,
   selectCurrentWoeid,
 } from "../action/entities";
+import { toggleSearch } from "../action/ui";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -48,7 +48,7 @@ const SearchLocation = () => {
         );
       }
       dispatch(selectCurrentWoeid(locationData.data[0].woeid));
-      dispatch(isSearchOff());
+      dispatch(toggleSearch());
     } catch (e) {
       alert(e);
     }
@@ -59,7 +59,7 @@ const SearchLocation = () => {
       <SearchHeader>
         <CloseButton
           onClick={() => {
-            dispatch(isSearchOff());
+            dispatch(toggleSearch());
           }}
         >
           <span className="material-icons">close</span>

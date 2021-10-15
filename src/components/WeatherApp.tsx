@@ -112,7 +112,7 @@ export const getCurrentPosition: (dispatch: Dispatch<any>) => void = (
 
 const WeatherApp: VFC = () => {
   const dispatch = useDispatch();
-  const isSearch: boolean = useSelector((state) => state.isSearch.isSearch);
+  const isShowSearch: boolean = useSelector((state) => state.ui.isShowSearch);
 
   useEffect(() => {
     getCurrentPosition(dispatch);
@@ -121,7 +121,7 @@ const WeatherApp: VFC = () => {
   return (
     <AppContainer>
       <MainContainer>
-        {isSearch ? <SearchLocation /> : <TodayWeather />}
+        {isShowSearch ? <SearchLocation /> : <TodayWeather />}
       </MainContainer>
     </AppContainer>
   );
