@@ -14,8 +14,8 @@ import Snow from "../image/Snow.png";
 import Thunderstorm from "../image/Thunderstorm.png";
 import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
-import { isSearchOn } from "../action/ui";
 import { Button } from "./styled-components/styledButton";
+import { toggleSearch } from "../action/ui";
 
 const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -79,7 +79,7 @@ const TodayWeather: VFC = () => {
           <TodayWeatherHeader>
             <SearchButton
               onClick={() => {
-                dispatch(isSearchOn());
+                dispatch(toggleSearch());
               }}
             >
               Search for place
