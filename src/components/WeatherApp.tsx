@@ -124,7 +124,7 @@ const WeatherApp: VFC = () => {
   const isShowSearch: boolean = useSelector((state) => state.ui.isShowSearch);
 
   useEffect(() => {
-    getCurrentPosition(dispatch);
+    getCurrentPosition(null, dispatch);
   }, [dispatch]);
 
   return (
