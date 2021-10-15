@@ -11,10 +11,8 @@ const initialState: UIState = {
 
 export const uiReducer = (state = initialState, { type }: UIAction) => {
   switch (type) {
-    case UI_ACTION_TYPE.IS_SEARCH_ON:
-      return { ...state, isShowSearch: true };
-    case UI_ACTION_TYPE.IS_SEARCH_OFF:
-      return { ...state, isShowSearch: false };
+    case UI_ACTION_TYPE.TOGGLE_SHOW_SEARCH:
+      return { ...state, isShowSearch: !state.isShowSearch };
     default:
       return state;
   }
