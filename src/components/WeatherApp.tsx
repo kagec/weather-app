@@ -99,12 +99,12 @@ export const getCurrentPosition: (
   dispatch: Dispatch<any>
 ) => void = (byWoeid, dispatch) => {
   const successFunc: PositionCallback = ({ coords }) => {
-    fetchWeatherData(coords, byWoeid, dispatch);
+    fetchWeatherData(dispatch, coords, byWoeid);
   };
 
   const errorFunc: PositionErrorCallback = (error) => {
     alert(ERROR_MESSAGE[error.code]);
-    fetchWeatherData(DEFAULT_LOCATION, byWoeid, dispatch);
+    fetchWeatherData(dispatch, DEFAULT_LOCATION, byWoeid);
   };
 
   if (navigator.geolocation) {
@@ -115,7 +115,7 @@ export const getCurrentPosition: (
     );
   } else {
     alert("Geolocation API がサポートされていません");
-    fetchWeatherData(DEFAULT_LOCATION, byWoeid, dispatch);
+    fetchWeatherData(dispatch, DEFAULT_LOCATION, byWoeid);
   }
 };
 
