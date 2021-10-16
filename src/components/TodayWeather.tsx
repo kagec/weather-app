@@ -85,7 +85,7 @@ const TodayWeather: VFC = () => {
               Search for place
             </SearchButton>
             <MyLocationButton
-              onClick={() => getCurrentPosition(locations, dispatch)}
+              onClick={() => getCurrentPosition(dispatch, locations)}
             >
               <span className="material-icons">my_location</span>
             </MyLocationButton>
