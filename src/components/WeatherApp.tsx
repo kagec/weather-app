@@ -95,9 +95,9 @@ export const fetchWeatherData: (
 };
 
 export const getCurrentPosition: (
-  byWoeid: { [key: number]: Location } | null,
-  dispatch: Dispatch<any>
-) => void = (byWoeid, dispatch) => {
+  dispatch: Dispatch<any>,
+  byWoeid: { [key: number]: Location } | null
+) => void = (dispatch, byWoeid) => {
   const successFunc: PositionCallback = ({ coords }) => {
     fetchWeatherData(dispatch, coords, byWoeid);
   };
