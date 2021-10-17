@@ -27,10 +27,10 @@ const NextWeather = () => {
           <ImageContainer>
             {getWeatherImage(weather.weather_state_abbr)}
           </ImageContainer>
-          <div>
+          <Temperature>
             {Math.round(weather.max_temp)}℃
             <span>{Math.round(weather.min_temp)}℃</span>
-          </div>
+          </Temperature>
         </li>
       ))}
     </NextWeatherUl>
@@ -60,6 +60,15 @@ const ImageContainer = styled.div`
   > img {
     width: 56px;
     height: 62px;
+  }
+`;
+
+const Temperature = styled.div`
+  margin-top: 31px;
+
+  > span {
+    margin-left: 15px;
+    color: #a09fb1;
   }
 `;
 
