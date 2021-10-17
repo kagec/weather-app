@@ -10,6 +10,7 @@ import {
   saveWeatherData,
   selectCurrentWoeid,
 } from "../action/entities";
+import NextWeather from "./NextWeather";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -132,7 +133,9 @@ const WeatherApp: VFC = () => {
       <MainContainer>
         {isShowSearch ? <SearchLocation /> : <TodayWeather />}
       </MainContainer>
-      <SubContainer></SubContainer>
+      <SubContainer>
+        <NextWeather />
+      </SubContainer>
     </AppContainer>
   );
 };
