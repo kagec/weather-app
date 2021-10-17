@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
+import styled from "styled-components";
 
 const NextWeather = () => {
   const [weathers, selectedWoeid]: [
@@ -15,7 +16,7 @@ const NextWeather = () => {
   return !weather ? (
     <div>Loading...</div>
   ) : (
-    <ul>
+    <NextWeatherUl>
       {weather.map((weather, index) => (
         <li key={weather.applicable_date}>
           <div>
@@ -30,8 +31,25 @@ const NextWeather = () => {
           </div>
         </li>
       ))}
-    </ul>
+    </NextWeatherUl>
   );
 };
+
+const NextWeatherUl = styled.ul`
+  list-style: none;
+  display: flex;
+  padding: 0;
+  column-gap: 26px;
+  font-weight: 500;
+  font-size: 16px;
+
+  > li {
+    width: 120px;
+    height: 177px;
+    padding: 18px 0;
+    text-align: center;
+    background-color: #1e213a;
+  }
+`;
 
 export default NextWeather;
