@@ -16,9 +16,13 @@ const NextWeather = () => {
     <div>Loading...</div>
   ) : (
     <ul>
-      {weather.map((weather) => (
+      {weather.map((weather, index) => (
         <li key={weather.applicable_date}>
-          <div>{changeDateFormat(weather.applicable_date)}</div>
+          <div>
+            {index === 0
+              ? "Tomorrow"
+              : changeDateFormat(weather.applicable_date)}
+          </div>
           <div>{getWeatherImage(weather.weather_state_abbr)}</div>
           <div>
             {Math.round(weather.max_temp)}℃
