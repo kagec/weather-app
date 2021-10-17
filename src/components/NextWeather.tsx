@@ -14,7 +14,7 @@ const NextWeather = () => {
   const weather = weathers?.[selectedWoeid]?.slice(1);
 
   return !weather ? (
-    <div>Loading...</div>
+    <Loading>Loading...</Loading>
   ) : (
     <NextWeatherUl>
       {weather.map((weather, index) => (
@@ -70,6 +70,11 @@ const Temperature = styled.div`
     margin-left: 15px;
     color: #a09fb1;
   }
+`;
+
+const Loading = styled.div`
+  color: #fff;
+  text-align: center;
 `;
 
 export default NextWeather;
