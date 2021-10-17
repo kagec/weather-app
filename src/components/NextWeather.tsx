@@ -24,7 +24,9 @@ const NextWeather = () => {
               ? "Tomorrow"
               : changeDateFormat(weather.applicable_date)}
           </div>
-          <div>{getWeatherImage(weather.weather_state_abbr)}</div>
+          <ImageContainer>
+            {getWeatherImage(weather.weather_state_abbr)}
+          </ImageContainer>
           <div>
             {Math.round(weather.max_temp)}℃
             <span>{Math.round(weather.min_temp)}℃</span>
@@ -49,6 +51,15 @@ const NextWeatherUl = styled.ul`
     padding: 18px 0;
     text-align: center;
     background-color: #1e213a;
+  }
+`;
+
+const ImageContainer = styled.div`
+  margin-top: 10px;
+
+  > img {
+    width: 56px;
+    height: 62px;
   }
 `;
 
