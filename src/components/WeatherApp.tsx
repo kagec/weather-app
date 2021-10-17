@@ -138,6 +138,7 @@ const WeatherApp: VFC = () => {
 };
 
 const AppContainer = styled.div`
+  display: flex;
   position: relative;
   margin: 0 auto;
 `;
