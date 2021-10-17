@@ -61,13 +61,21 @@ const ERROR_MESSAGE: { [key: number]: string } = {
 };
 
 export const fetchWeatherData: (
+  dispatch: Dispatch<any>,
   coords: Coords,
-  dispatch: Dispatch<any>
-) => Promise<void> = async (coords, dispatch) => {
+  byWoeid?: { [key: number]: Location }
+) => Promise<void> = async (dispatch, coords, byWoeid) => {
   try {
     const locationData = await axios.get(
       `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
     );
+
+    if (byWoeid !== undefined) {
+      if (byWoeid[locationData.data[0].woeid]) {
+        dispatch(selectCurrentWoeid(locationData.data[0].woeid));
+        return;
+      }
+    }
     dispatch(saveLocationData(locationData.data[0]));
 
     const weatherData = await axios.get(
@@ -86,16 +94,17 @@ export const fetchWeatherData: (
   }
 };
 
-export const getCurrentPosition: (dispatch: Dispatch<any>) => void = (
-  dispatch
-) => {
+export const getCurrentPosition: (
+  dispatch: Dispatch<any>,
+  byWoeid?: { [key: number]: Location }
+) => void = (dispatch, byWoeid) => {
   const successFunc: PositionCallback = ({ coords }) => {
-    fetchWeatherData(coords, dispatch);
+    fetchWeatherData(dispatch, coords, byWoeid);
   };
 
   const errorFunc: PositionErrorCallback = (error) => {
     alert(ERROR_MESSAGE[error.code]);
-    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+    fetchWeatherData(dispatch, DEFAULT_LOCATION, byWoeid);
   };
 
   if (navigator.geolocation) {
@@ -106,7 +115,7 @@ export const getCurrentPosition: (dispatch: Dispatch<any>) => void = (
     );
   } else {
     alert("Geolocation API がサポートされていません");
-    fetchWeatherData(DEFAULT_LOCATION, dispatch);
+    fetchWeatherData(dispatch, DEFAULT_LOCATION, byWoeid);
   }
 };
 
