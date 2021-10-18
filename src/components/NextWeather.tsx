@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
 import styled from "styled-components";
-import { getChangedDegree } from "./ChangeDegree";
+import { getChangedDegree, getDegreeTypeChar } from "./ChangeDegree";
 
 const NextWeather = () => {
   const [weathers, selectedWoeid, isFahrenheit]: [
@@ -31,8 +31,12 @@ const NextWeather = () => {
             {getWeatherImage(weather.weather_state_abbr)}
           </ImageContainer>
           <Temperature>
-            {getChangedDegree(isFahrenheit, weather.max_temp)}℃
-            <span>{getChangedDegree(isFahrenheit, weather.min_temp)}℃</span>
+            {getChangedDegree(isFahrenheit, weather.max_temp)}
+            {getDegreeTypeChar(isFahrenheit)}
+            <span>
+              {getChangedDegree(isFahrenheit, weather.min_temp)}
+              {getDegreeTypeChar(isFahrenheit)}
+            </span>
           </Temperature>
         </li>
       ))}

@@ -16,7 +16,7 @@ import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
-import { getChangedDegree } from "./ChangeDegree";
+import { getChangedDegree, getDegreeTypeChar } from "./ChangeDegree";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -98,7 +98,7 @@ const TodayWeather: VFC = () => {
           </ImageContainer>
           <Temperature>
             {getChangedDegree(isFahrenheit, todayWeatherData.the_temp)}
-            <span>℃</span>
+            <span>{getDegreeTypeChar(isFahrenheit)}</span>
           </Temperature>
           <WeatherName>{todayWeatherData.weather_state_name}</WeatherName>
           <Day>
