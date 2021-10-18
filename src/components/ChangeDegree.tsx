@@ -16,6 +16,10 @@ export const getChangedDegree: (
   }
 };
 
+export const getDegreeTypeChar: (isFahrenheit: boolean) => string = (
+  isFahrenheit
+) => (isFahrenheit ? "℉" : "℃");
+
 const ChangeDegree = () => {
   return (
     <ChangeDegreeContainer>
