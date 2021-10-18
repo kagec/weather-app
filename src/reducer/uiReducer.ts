@@ -17,6 +17,8 @@ export const uiReducer = (state = initialState, { type }: UIAction) => {
       return { ...state, isShowSearch: !state.isShowSearch };
     case UI_ACTION_TYPE.CHANGE_DEGREE_FAHRENHEIT:
       return { ...state, isFahrenheit: true };
+    case UI_ACTION_TYPE.CHANGE_DEGREE_CELSIUS:
+      return { ...state, isFahrenheit: false };
     default:
       return state;
   }
