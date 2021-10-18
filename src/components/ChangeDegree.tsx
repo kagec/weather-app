@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Button } from "./styled-components/styledButton";
 
+export const CelsiusToFahrenheit: (degree: number) => number = (
+  degree: number
+) => degree * 1.8 + 32;
+
 const ChangeDegree = () => {
   return (
     <ChangeDegreeContainer>
