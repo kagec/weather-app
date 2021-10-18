@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
-import { changeDegreeToFahrenheit } from "../action/ui";
+import { changeDegreeToCelsius, changeDegreeToFahrenheit } from "../action/ui";
 import { Button } from "./styled-components/styledButton";
 
 export const CelsiusToFahrenheit: (degree: number) => number = (
@@ -27,7 +27,9 @@ const ChangeDegree = () => {
 
   return (
     <ChangeDegreeContainer>
-      <CelsiusButton>℃</CelsiusButton>
+      <CelsiusButton onClick={() => dispatch(changeDegreeToCelsius())}>
+        ℃
+      </CelsiusButton>
       <FahrenheitButton onClick={() => dispatch(changeDegreeToFahrenheit())}>
         ℉
       </FahrenheitButton>
