@@ -5,7 +5,7 @@ const ChangeDegree = () => {
   return (
     <ChangeDegreeContainer>
       <CelsiusButton>℃</CelsiusButton>
-      <button>℉</button>
+      <FahrenheitButton>℉</FahrenheitButton>
     </ChangeDegreeContainer>
   );
 };
@@ -24,6 +24,17 @@ const CelsiusButton = styled(Button)`
   background: #e7e7eb;
   border-radius: 50px;
   border-color: transparent;
+`;
+
+const FahrenheitButton = styled(Button)`
+  width: 40px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  background: #585676;
+  border-radius: 50px;
+  border-color: transparent;
+  margin-left: 12px;
 `;
 
 export default ChangeDegree;
