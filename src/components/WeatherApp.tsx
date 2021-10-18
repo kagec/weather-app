@@ -11,6 +11,7 @@ import {
   selectCurrentWoeid,
 } from "../action/entities";
 import NextWeather from "./NextWeather";
+import ChangeDegree from "./ChangeDegree";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -134,6 +135,7 @@ const WeatherApp: VFC = () => {
         {isShowSearch ? <SearchLocation /> : <TodayWeather />}
       </MainContainer>
       <SubContainer>
+        <ChangeDegree />
         <NextWeather />
       </SubContainer>
     </AppContainer>
