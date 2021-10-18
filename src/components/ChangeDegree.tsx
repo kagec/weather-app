@@ -5,6 +5,17 @@ export const CelsiusToFahrenheit: (degree: number) => number = (
   degree: number
 ) => degree * 1.8 + 32;
 
+export const getChangedDegree: (
+  isFahrenheit: boolean,
+  degree: number
+) => number = (isFahrenheit, degree) => {
+  if (isFahrenheit) {
+    return Math.round(CelsiusToFahrenheit(Math.round(degree)));
+  } else {
+    return Math.round(degree);
+  }
+};
+
 const ChangeDegree = () => {
   return (
     <ChangeDegreeContainer>
