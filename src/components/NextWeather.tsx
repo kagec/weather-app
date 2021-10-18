@@ -58,7 +58,6 @@ const ImageContainer = styled.div`
   margin-top: 10px;
 
   > img {
-    width: 56px;
     height: 62px;
   }
 `;
