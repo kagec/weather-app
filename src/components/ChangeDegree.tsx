@@ -1,10 +1,17 @@
+import styled from "styled-components";
+
 const ChangeDegree = () => {
   return (
-    <div>
+    <ChangeDegreeContainer>
       <button>℃</button>
       <button>℉</button>
-    </div>
+    </ChangeDegreeContainer>
   );
 };
+
+const ChangeDegreeContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
 
 export default ChangeDegree;
