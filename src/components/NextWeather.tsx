@@ -51,6 +51,7 @@ const NextWeatherUl = styled.ul`
   column-gap: 26px;
   font-weight: 500;
   font-size: 16px;
+  margin-top: 66px;
 
   > li {
     width: 120px;
