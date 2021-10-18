@@ -3,10 +3,12 @@ import type { UIAction } from "../action/ui";
 
 export interface UIState {
   isShowSearch: boolean;
+  isFahrenheit: boolean;
 }
 
 const initialState: UIState = {
   isShowSearch: false,
+  isFahrenheit: false,
 };
 
 export const uiReducer = (state = initialState, { type }: UIAction) => {
