@@ -17,12 +17,12 @@ import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
 
-const changeDateFormat = (dateString: string): string => {
+export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
   return date.toUTCString().slice(0, 12);
 };
 
-const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
+export const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
   weatherStateAbbr
 ) => {
   switch (weatherStateAbbr) {

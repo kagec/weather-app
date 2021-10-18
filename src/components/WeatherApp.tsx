@@ -10,6 +10,7 @@ import {
   saveWeatherData,
   selectCurrentWoeid,
 } from "../action/entities";
+import NextWeather from "./NextWeather";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -132,11 +133,15 @@ const WeatherApp: VFC = () => {
       <MainContainer>
         {isShowSearch ? <SearchLocation /> : <TodayWeather />}
       </MainContainer>
+      <SubContainer>
+        <NextWeather />
+      </SubContainer>
     </AppContainer>
   );
 };
 
 const AppContainer = styled.div`
+  display: flex;
   position: relative;
   margin: 0 auto;
 `;
@@ -146,6 +151,14 @@ const MainContainer = styled.div`
   height: 1023px;
   background-color: #1e213a;
   overflow-y: auto;
+`;
+
+const SubContainer = styled.div`
+  width: 981px;
+  height: 1023px;
+  background: #100e1d;
+  padding: 42px 123px 0 154px;
+  color: #e7e7eb; ;
 `;
 
 export default WeatherApp;
