@@ -3,25 +3,6 @@ import styled, { css } from "styled-components";
 import { changeDegreeToCelsius, changeDegreeToFahrenheit } from "../action/ui";
 import { Button } from "./styled-components/styledButton";
 
-export const CelsiusToFahrenheit: (degree: number) => number = (
-  degree: number
-) => degree * 1.8 + 32;
-
-export const getChangedDegree: (
-  isFahrenheit: boolean,
-  degree: number
-) => number = (isFahrenheit, degree) => {
-  if (isFahrenheit) {
-    return Math.round(CelsiusToFahrenheit(Math.round(degree)));
-  } else {
-    return Math.round(degree);
-  }
-};
-
-export const getDegreeTypeChar: (isFahrenheit: boolean) => string = (
-  isFahrenheit
-) => (isFahrenheit ? "℉" : "℃");
-
 const ChangeDegree = () => {
   const dispatch = useDispatch();
   const isFahrenheit: boolean = useSelector((state) => state.ui.isFahrenheit);
