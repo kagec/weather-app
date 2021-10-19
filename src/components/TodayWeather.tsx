@@ -16,7 +16,7 @@ import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
-import { getChangedDegree, getDegreeTypeChar } from "./ChangeDegree";
+import { useTemperature } from "../Hooks/useTemperature";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -58,20 +58,19 @@ export const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
 };
 
 const TodayWeather: VFC = () => {
-  const [locations, weathers, selectedWoeid, isFahrenheit]: [
+  const [locations, weathers, selectedWoeid]: [
     locations: { [key: number]: Location },
     weathers: { [key: number]: ConsolidatedWeather },
-    selectedWoeid: number,
-    degreeType: boolean
+    selectedWoeid: number
   ] = useSelector((state) => [
     state.entities.locations.byWoeid,
     state.entities.weathers.byWoeid,
     state.entities.locations.selectedWoeid,
-    state.ui.isFahrenheit,
   ]);
   const dispatch = useDispatch();
   const location = locations?.[selectedWoeid];
   const todayWeatherData = weathers?.[selectedWoeid]?.[0];
+  const [degree, temperature] = useTemperature();
 
   return (
     <TodayWeatherWrapper>
@@ -97,8 +96,8 @@ const TodayWeather: VFC = () => {
             {getWeatherImage(todayWeatherData.weather_state_abbr)}
           </ImageContainer>
           <Temperature>
-            {getChangedDegree(isFahrenheit, todayWeatherData.the_temp)}
-            <span>{getDegreeTypeChar(isFahrenheit)}</span>
+            {temperature(todayWeatherData.the_temp)}
+            <span>{degree}</span>
           </Temperature>
           <WeatherName>{todayWeatherData.weather_state_name}</WeatherName>
           <Day>

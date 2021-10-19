@@ -2,19 +2,18 @@ import { useSelector } from "react-redux";
 import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
 import styled from "styled-components";
-import { getChangedDegree, getDegreeTypeChar } from "./ChangeDegree";
+import { useTemperature } from "../Hooks/useTemperature";
 
 const NextWeather = () => {
-  const [weathers, selectedWoeid, isFahrenheit]: [
+  const [weathers, selectedWoeid]: [
     { [key: number]: ConsolidatedWeather },
-    number,
-    boolean
+    number
   ] = useSelector((state) => [
     state.entities.weathers.byWoeid,
     state.entities.locations.selectedWoeid,
-    state.ui.isFahrenheit,
   ]);
   const weather = weathers?.[selectedWoeid]?.slice(1);
+  const [degree, temperature] = useTemperature();
 
   return !weather ? (
     <Loading>Loading...</Loading>
@@ -31,11 +30,11 @@ const NextWeather = () => {
             {getWeatherImage(weather.weather_state_abbr)}
           </ImageContainer>
           <Temperature>
-            {getChangedDegree(isFahrenheit, weather.max_temp)}
-            {getDegreeTypeChar(isFahrenheit)}
+            {temperature(weather.max_temp)}
+            {degree}
             <span>
-              {getChangedDegree(isFahrenheit, weather.min_temp)}
-              {getDegreeTypeChar(isFahrenheit)}
+              {temperature(weather.min_temp)}
+              {degree}
             </span>
           </Temperature>
         </li>
