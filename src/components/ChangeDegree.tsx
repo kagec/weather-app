@@ -9,18 +9,8 @@ const ChangeDegree = () => {
 
   return (
     <ChangeDegreeContainer>
-      <CelsiusButton
-        onClick={() => dispatch(changeDegreeToCelsius())}
-        isFahrenheit={isFahrenheit}
-      >
-        ℃
-      </CelsiusButton>
-      <FahrenheitButton
-        onClick={() => dispatch(changeDegreeToFahrenheit())}
-        isFahrenheit={isFahrenheit}
-      >
-        ℉
-      </FahrenheitButton>
+      <Button onClick={() => dispatch(changeDegreeToCelsius())}>℃</Button>
+      <Button onClick={() => dispatch(changeDegreeToFahrenheit())}>℉</Button>
     </ChangeDegreeContainer>
   );
 };
