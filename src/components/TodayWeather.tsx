@@ -16,7 +16,7 @@ import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
-import { useTemperature } from "../Hooks/useTemperature";
+import { useTemperature } from "../hooks/useTemperature";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);

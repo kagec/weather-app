@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
 import styled from "styled-components";
-import { useTemperature } from "../Hooks/useTemperature";
+import { useTemperature } from "../hooks/useTemperature";
 
 const NextWeather = () => {
   const [weathers, selectedWoeid]: [
