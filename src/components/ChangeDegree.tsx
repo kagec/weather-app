@@ -8,54 +8,51 @@ const ChangeDegree = () => {
   const isFahrenheit: boolean = useSelector((state) => state.ui.isFahrenheit);
 
   return (
-    <ChangeDegreeContainer isFahrenheit={isFahrenheit}>
-      <Button onClick={() => dispatch(changeDegreeToCelsius())}>℃</Button>
-      <Button onClick={() => dispatch(changeDegreeToFahrenheit())}>℉</Button>
+    <ChangeDegreeContainer>
+      <FahrenheitButton
+        onClick={() => dispatch(changeDegreeToCelsius())}
+        isFahrenheit={!isFahrenheit}
+      >
+        ℃
+      </FahrenheitButton>
+      <FahrenheitButton
+        onClick={() => dispatch(changeDegreeToFahrenheit())}
+        isFahrenheit={isFahrenheit}
+      >
+        ℉
+      </FahrenheitButton>
     </ChangeDegreeContainer>
   );
 };
 
-const ChangeDegreeContainer = styled.div<{ isFahrenheit: boolean }>`
+const ChangeDegreeContainer = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  > button {
-    width: 40px;
-    height: 40px;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 50px;
-    border-color: transparent;
-  }
-
-  > button:first-child {
-    ${({ isFahrenheit }) => css`
-      ${isFahrenheit
-        ? `
-      color: #E7E7EB;
-      background-color: #585676;
-      `
-        : `
-      color: #110e3c;
-      background: #e7e7eb;
-   `}
-    `}
-  }
-
-  > button:last-child {
+  > button:not(:first-child) {
     margin-left: 12px;
-    ${({ isFahrenheit }) => css`
-      ${isFahrenheit
-        ? `
+  }
+`;
+
+const FahrenheitButton = styled(Button)<{ isFahrenheit: boolean }>`
+  width: 40px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 50px;
+  border-color: transparent;
+
+  ${({ isFahrenheit }) => css`
+    ${isFahrenheit
+      ? `
       color: #110e3c;
-      background: #e7e7eb;
+      background-color: #e7e7eb;
       `
-        : `
-      color: #E7E7EB;
+      : `
+      color: #e7e7eb;
       background-color: #585676;
    `}
-    `}
-  }
+  `}
 `;
 
 export default ChangeDegree;
