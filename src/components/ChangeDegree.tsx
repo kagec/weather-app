@@ -26,8 +26,7 @@ const ChangeDegree = () => {
 };
 
 const ChangeDegreeContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
+  text-align: right;
 
   > button:not(:first-child) {
     margin-left: 12px;
