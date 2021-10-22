@@ -62,6 +62,17 @@ const Highlights = () => {
             {weather.humidity}
             <span>%</span>
           </HumidityData>
+          <HumidityGauge>
+            <Scale>
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+            </Scale>
+            <Gauge percent={weather.humidity}>
+              <div></div>
+            </Gauge>
+            <span>%</span>
+          </HumidityGauge>
         </LargeTile>
         <SmallTile>
           <Title>Visibility</Title>
@@ -178,6 +189,50 @@ const MaterialIcon = styled.span<{ angle: number }>`
   ${({ angle }) => css`
     transform: rotate(${angle}deg);
   `}
+`;
+
+const HumidityGauge = styled.div`
+  margin: 12px auto 0;
+  width: 229px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #a09fb1;
+
+  > span {
+    display: flex;
+    justify-content: flex-end;
+  }
+`;
+
+const Scale = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Gauge = styled.div<{ percent: number }>`
+  height: 8px;
+  border-radius: 80px;
+  background-color: #e7e7eb;
+
+  > div {
+    height: 8px;
+    border-radius: 80px;
+    animation: humidityPercent 1s ease 0s 1 normal forwards;
+
+    ${({ percent }) => css`
+      @keyframes humidityPercent {
+        0% {
+          width: 0;
+          background-color: #ffec65;
+        }
+
+        100% {
+          width: ${percent}%;
+          background-color: #ffec65;
+        }
+      }
+    `};
+  }
 `;
 
 export default Highlights;
