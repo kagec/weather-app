@@ -19,7 +19,7 @@ const Highlights = () => {
       <HighlightHeader>Today's Highlights</HighlightHeader>
       <HightlightContainer>
         <LargeTile>
-          <div>Wind status</div>
+          <Title>Wind status</Title>
           <div>
             {Math.round(weather.wind_speed)}
             <span>mph</span>
@@ -30,21 +30,21 @@ const Highlights = () => {
           </div>
         </LargeTile>
         <LargeTile>
-          <div>Humidity</div>
+          <Title>Humidity</Title>
           <div>
             {weather.humidity}
             <span>%</span>
           </div>
         </LargeTile>
         <SmallTile>
-          <div>Visibility</div>
+          <Title>Visibility</Title>
           <div>
             {(Math.round(weather.visibility * 10) / 10).toLocaleString("de-DE")}
             <span> miles</span>
           </div>
         </SmallTile>
         <SmallTile>
-          <div>Air Pressure</div>
+          <Title>Air Pressure</Title>
           <div>
             {Math.round(weather.air_pressure).toLocaleString("de-DE")}
             <span> mb</span>
@@ -84,6 +84,12 @@ const LargeTile = styled(Tile)`
 
 const SmallTile = styled(Tile)`
   height: 159px;
+`;
+
+const Title = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 22px;
 `;
 
 export default Highlights;
