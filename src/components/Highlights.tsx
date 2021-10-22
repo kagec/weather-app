@@ -16,7 +16,7 @@ const Highlights = () => {
     <div>Loading</div>
   ) : (
     <HighlightWrapper>
-      <div>Today's Highlights</div>
+      <HighlightHeader>Today's Highlights</HighlightHeader>
       <div>
         <div>
           <div>Wind status</div>
@@ -58,6 +58,11 @@ const Highlights = () => {
 const HighlightWrapper = styled.div`
   color: #e7e7eb;
   margin-top: 72px;
+`;
+
+const HighlightHeader = styled.div`
+  font-size: 24px;
+  font-weight: 700;
 `;
 
 export default Highlights;
