@@ -20,10 +20,10 @@ const Highlights = () => {
       <HightlightContainer>
         <LargeTile>
           <Title>Wind status</Title>
-          <div>
+          <WindData>
             {Math.round(weather.wind_speed)}
             <span>mph</span>
-          </div>
+          </WindData>
           <div>
             <span className="material-icons">navigation</span>
             {weather.wind_direction_compass}
@@ -31,24 +31,24 @@ const Highlights = () => {
         </LargeTile>
         <LargeTile>
           <Title>Humidity</Title>
-          <div>
+          <HumidityData>
             {weather.humidity}
             <span>%</span>
-          </div>
+          </HumidityData>
         </LargeTile>
         <SmallTile>
           <Title>Visibility</Title>
-          <div>
+          <VisibilityData>
             {(Math.round(weather.visibility * 10) / 10).toLocaleString("de-DE")}
             <span> miles</span>
-          </div>
+          </VisibilityData>
         </SmallTile>
         <SmallTile>
           <Title>Air Pressure</Title>
-          <div>
+          <AirPressureData>
             {Math.round(weather.air_pressure).toLocaleString("de-DE")}
             <span> mb</span>
-          </div>
+          </AirPressureData>
         </SmallTile>
       </HightlightContainer>
     </HighlightWrapper>
@@ -90,6 +90,47 @@ const Title = styled.div`
   font-size: 16px;
   font-weight: 500;
   margin-top: 22px;
+`;
+
+const Data = styled.div`
+  font-size: 64px;
+  font-weight: 700;
+`;
+
+const WindData = styled(Data)`
+  margin-top: 6px;
+
+  > span {
+    font-size: 36px;
+    font-weight: 500;
+  }
+`;
+
+const HumidityData = styled(Data)`
+  margin-top: 11px;
+
+  > span {
+    font-size: 36px;
+    font-weight: 400;
+  }
+`;
+
+const VisibilityData = styled(Data)`
+  margin-top: 6px;
+
+  > span {
+    font-size: 36px;
+    font-weight: 500;
+  }
+`;
+
+const AirPressureData = styled(Data)`
+  margin-top: 6px;
+
+  > span {
+    font-size: 36px;
+    font-weight: 500;
+  }
 `;
 
 export default Highlights;
