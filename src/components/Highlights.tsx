@@ -2,6 +2,28 @@ import { useSelector } from "react-redux";
 import styled from "styled-components";
 import type { ConsolidatedWeather } from "./WeatherApp";
 
+const DIRECTION_16 = [
+  "N",
+  "NNE",
+  "NE",
+  "ENE",
+  "E",
+  "ESE",
+  "SE",
+  "SSE",
+  "S",
+  "SSW",
+  "SW",
+  "WSW",
+  "W",
+  "WNW",
+  "NW",
+  "NNW",
+];
+
+const getDirectionAngle: (direction: string) => number = (direction) =>
+  22.5 * DIRECTION_16.indexOf(direction);
+
 const Highlights = () => {
   const [weathers, selectedWoeid]: [
     { [key: number]: ConsolidatedWeather },
