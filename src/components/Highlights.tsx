@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import type { ConsolidatedWeather } from "./WeatherApp";
 
 const DIRECTION_16 = [
@@ -46,10 +46,15 @@ const Highlights = () => {
             {Math.round(weather.wind_speed)}
             <span>mph</span>
           </WindData>
-          <div>
-            <span className="material-icons">navigation</span>
+          <Compass>
+            <MaterialIcon
+              className="material-icons"
+              angle={getDirectionAngle(weather.wind_direction_compass)}
+            >
+              navigation
+            </MaterialIcon>
             {weather.wind_direction_compass}
-          </div>
+          </Compass>
         </LargeTile>
         <LargeTile>
           <Title>Humidity</Title>
@@ -153,6 +158,26 @@ const AirPressureData = styled(Data)`
     font-size: 36px;
     font-weight: 500;
   }
+`;
+
+const Compass = styled.div`
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 17px;
+`;
+
+const MaterialIcon = styled.span<{ angle: number }>`
+  font-size: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #ffffff4d;
+  padding-top: 6px;
+  margin-right: 8px;
+
+  ${({ angle }) => css`
+    transform: rotate(${angle}deg);
+  `}
 `;
 
 export default Highlights;
