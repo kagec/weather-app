@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
 import styled from "styled-components";
+import { useTemperature } from "../hooks/useTemperature";
 
 const NextWeather = () => {
   const [weathers, selectedWoeid]: [
@@ -12,6 +13,7 @@ const NextWeather = () => {
     state.entities.locations.selectedWoeid,
   ]);
   const weather = weathers?.[selectedWoeid]?.slice(1);
+  const [degree, temperature] = useTemperature();
 
   return !weather ? (
     <Loading>Loading...</Loading>
@@ -28,8 +30,12 @@ const NextWeather = () => {
             {getWeatherImage(weather.weather_state_abbr)}
           </ImageContainer>
           <Temperature>
-            {Math.round(weather.max_temp)}℃
-            <span>{Math.round(weather.min_temp)}℃</span>
+            {temperature(weather.max_temp)}
+            {degree}
+            <span>
+              {temperature(weather.min_temp)}
+              {degree}
+            </span>
           </Temperature>
         </li>
       ))}
@@ -44,6 +50,7 @@ const NextWeatherUl = styled.ul`
   column-gap: 26px;
   font-weight: 500;
   font-size: 16px;
+  margin-top: 66px;
 
   > li {
     width: 120px;

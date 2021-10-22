@@ -16,6 +16,7 @@ import type { ConsolidatedWeather, Location } from "./WeatherApp";
 import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
+import { useTemperature } from "../hooks/useTemperature";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -69,6 +70,7 @@ const TodayWeather: VFC = () => {
   const dispatch = useDispatch();
   const location = locations?.[selectedWoeid];
   const todayWeatherData = weathers?.[selectedWoeid]?.[0];
+  const [degree, temperature] = useTemperature();
 
   return (
     <TodayWeatherWrapper>
@@ -94,8 +96,8 @@ const TodayWeather: VFC = () => {
             {getWeatherImage(todayWeatherData.weather_state_abbr)}
           </ImageContainer>
           <Temperature>
-            {Math.round(todayWeatherData ? todayWeatherData.the_temp : 1)}
-            <span>℃</span>
+            {temperature(todayWeatherData.the_temp)}
+            <span>{degree}</span>
           </Temperature>
           <WeatherName>{todayWeatherData.weather_state_name}</WeatherName>
           <Day>
