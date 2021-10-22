@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import styled from "styled-components";
 import type { ConsolidatedWeather } from "./WeatherApp";
 
 const Highlights = () => {
@@ -14,7 +15,7 @@ const Highlights = () => {
   return !weather ? (
     <div>Loading</div>
   ) : (
-    <div>
+    <HighlightWrapper>
       <div>Today's Highlights</div>
       <div>
         <div>
@@ -50,8 +51,13 @@ const Highlights = () => {
           </div>
         </div>
       </div>
-    </div>
+    </HighlightWrapper>
   );
 };
+
+const HighlightWrapper = styled.div`
+  color: #e7e7eb;
+  margin-top: 72px;
+`;
 
 export default Highlights;
