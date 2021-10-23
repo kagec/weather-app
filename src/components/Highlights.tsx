@@ -39,7 +39,7 @@ const Highlights = () => {
   ) : (
     <HighlightWrapper>
       <HighlightHeader>Today's Highlights</HighlightHeader>
-      <HightlightContainer>
+      <HighlightContainer>
         <LargeTile>
           <Title>Wind status</Title>
           <WindData>
@@ -88,7 +88,7 @@ const Highlights = () => {
             <span> mb</span>
           </AirPressureData>
         </SmallTile>
-      </HightlightContainer>
+      </HighlightContainer>
     </HighlightWrapper>
   );
 };
@@ -103,7 +103,7 @@ const HighlightHeader = styled.div`
   font-weight: 700;
 `;
 
-const HightlightContainer = styled.div`
+const HighlightContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
