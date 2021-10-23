@@ -65,9 +65,7 @@ const Highlights = () => {
               <span>50</span>
               <span>100</span>
             </Scale>
-            <Gauge percent={weather.humidity}>
-              <div></div>
-            </Gauge>
+            <Gauge percent={weather.humidity}></Gauge>
             <span>%</span>
           </HumidityGauge>
         </LargeTile>
@@ -207,13 +205,17 @@ const Scale = styled.div`
 `;
 
 const Gauge = styled.div<{ percent: number }>`
+  position: relative;
   height: 8px;
   border-radius: 80px;
   background-color: #e7e7eb;
 
-  > div {
+  &::before {
+    content: "";
     height: 8px;
     border-radius: 80px;
+    position: absolute;
+    left: 0;
     animation: humidityPercent 1s ease 0s 1 normal forwards;
 
     ${({ percent }) => css`
