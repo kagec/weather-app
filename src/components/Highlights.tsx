@@ -2,27 +2,24 @@ import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import type { ConsolidatedWeather } from "./WeatherApp";
 
-const DIRECTION_16 = [
-  "N",
-  "NNE",
-  "NE",
-  "ENE",
-  "E",
-  "ESE",
-  "SE",
-  "SSE",
-  "S",
-  "SSW",
-  "SW",
-  "WSW",
-  "W",
-  "WNW",
-  "NW",
-  "NNW",
-];
-
-const getDirectionAngle: (direction: string) => number = (direction) =>
-  22.5 * DIRECTION_16.indexOf(direction);
+const DIRECTION_16: { [key: string]: number } = {
+  N: 0,
+  NNE: 22.5,
+  NE: 45,
+  ENE: 67.5,
+  E: 90,
+  ESE: 112.5,
+  SE: 135,
+  SSE: 157.5,
+  S: 180,
+  SSW: 202.5,
+  SW: 225,
+  WSW: 247.5,
+  W: 270,
+  WNW: 292.5,
+  NW: 315,
+  NNW: 337.5,
+};
 
 const Highlights = () => {
   const [weathers, selectedWoeid]: [
@@ -49,7 +46,7 @@ const Highlights = () => {
           <Compass>
             <MaterialIcon
               className="material-icons"
-              angle={getDirectionAngle(weather.wind_direction_compass)}
+              angle={DIRECTION_16[weather.wind_direction_compass]}
             >
               navigation
             </MaterialIcon>
