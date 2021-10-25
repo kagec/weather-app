@@ -1,5 +1,9 @@
 const Footer = () => {
-  return <div></div>;
+  return (
+    <footer>
+      created by <span>kagec</span> - devChallenges.io
+    </footer>
+  );
 };
 
 export default Footer;
