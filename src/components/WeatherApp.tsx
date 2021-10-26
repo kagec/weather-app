@@ -150,21 +150,46 @@ const AppContainer = styled.div`
   display: flex;
   position: relative;
   margin: 0 auto;
+
+  @media screen and (max-width: 1339px) {
+    flex-direction: column;
+  }
 `;
 
 const MainContainer = styled.div`
-  width: 459px;
-  height: 1023px;
   background-color: #1e213a;
   overflow-y: auto;
+
+  @media screen and (min-width: 1340px) {
+    width: 459px;
+    height: 1023px;
+    border-radius: 10px 0 0 10px;
+  }
+
+  @media screen and (max-width: 1339px) {
+    width: 375px;
+    height: 810px;
+    border-radius: 10px 10px 0 0;
+  }
 `;
 
 const SubContainer = styled.div`
-  width: 981px;
-  height: 1023px;
   background: #100e1d;
-  padding: 42px 123px 0 154px;
-  color: #e7e7eb; ;
+  color: #e7e7eb;
+
+  @media screen and (min-width: 1340px) {
+    width: 981px;
+    height: 1023px;
+    padding: 42px 123px 0 154px;
+    border-radius: 0 10px 10px 0;
+  }
+
+  @media screen and (max-width: 1339px) {
+    width: 375px;
+    height: 1718px;
+    padding: 52px 23px 0;
+    border-radius: 0 0 10px 10px;
+  }
 `;
 
 export default WeatherApp;
