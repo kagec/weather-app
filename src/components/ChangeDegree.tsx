@@ -26,7 +26,13 @@ const ChangeDegree = () => {
 };
 
 const ChangeDegreeContainer = styled.div`
-  text-align: right;
+  @media screen and (min-width: 1340px) {
+    text-align: right;
+  }
+
+  @media screen and (max-width: 1339px) {
+    display: none;
+  }
 
   > button:not(:first-child) {
     margin-left: 12px;
