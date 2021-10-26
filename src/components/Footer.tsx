@@ -14,11 +14,17 @@ const FooterSign = styled.footer`
   font-size: 14px;
   font-weight: 500;
   text-align: center;
-  margin-top: 112px;
 
   > span {
     font-weight: 700;
     border-bottom: solid 1px;
+  }
+
+  @media screen and (min-width: 1340px) {
+    margin-top: 112px;
+  }
+  @media screen and (max-width: 1339px) {
+    margin-top: 96px;
   }
 `;
 
