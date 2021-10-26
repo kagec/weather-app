@@ -119,23 +119,45 @@ const TodayWeather: VFC = () => {
 
 const TodayWeatherWrapper = styled.div`
   position: relative;
-  padding: 46px;
   text-align: center;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
-  background-size: auto;
-  background-position: -110px 103px;
+
+  @media screen and (min-width: 1340px) {
+    padding: 46px;
+    background-position: -110px 103px;
+    background-size: auto;
+  }
+
+  @media screen and (max-width: 1339px) {
+    padding: 18px 12px;
+    background-position: -100px 62px;
+    background-size: 580px;
+  }
 `;
 
 const TodayWeatherContainer = styled.div`
-  > div:not(:last-child) {
-    margin-top: 87px;
+  @media screen and (min-width: 1340px) {
+    > div:not(:last-child) {
+      margin-top: 87px;
+    }
   }
 `;
 
 const ImageContainer = styled.div`
   display: inline-block;
-  height: 250px;
+
+  @media screen and (min-width: 1340px) {
+    height: 250px;
+  }
+
+  @media screen and (max-width: 1339px) {
+    margin-top: 70px;
+
+    > img {
+      height: 174px;
+    }
+  }
 `;
 
 const Temperature = styled.div`
@@ -148,18 +170,30 @@ const Temperature = styled.div`
     font-size: 48px;
     color: #a09fb1;
   }
+
+  @media screen and (max-width: 1339px) {
+    margin-top: 35px;
+  }
 `;
 
 const WeatherName = styled.div`
   color: #a09fb1;
   font-weight: 600;
   font-size: 36px;
+
+  @media screen and (max-width: 1339px) {
+    margin-top: 23px;
+  }
 `;
 
 const Day = styled.div`
   color: #88869d;
   font-weight: 500;
   font-size: 18px;
+
+  @media screen and (max-width: 1339px) {
+    margin-top: 45px;
+  }
 `;
 
 const Place = styled.div`
