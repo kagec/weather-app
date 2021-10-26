@@ -18,6 +18,7 @@ const FooterSign = styled.footer`
 
   > span {
     font-weight: 700;
+    border-bottom: solid 1px;
   }
 `;
 
