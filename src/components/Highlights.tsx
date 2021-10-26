@@ -90,7 +90,14 @@ const Highlights = () => {
 
 const HighlightWrapper = styled.div`
   color: #e7e7eb;
-  margin-top: 72px;
+
+  @media screen and (min-width: 1340px) {
+    margin-top: 72px;
+  }
+
+  @media screen and (max-width: 1339px) {
+    margin-top: 51px;
+  }
 `;
 
 const HighlightHeader = styled.div`
@@ -102,7 +109,14 @@ const HighlightContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 32px;
-  gap: 48px;
+
+  @media screen and (min-width: 1340px) {
+    gap: 48px;
+  }
+
+  @media screen and (max-width: 1339px) {
+    gap: 32px;
+  }
 `;
 
 const Tile = styled.div`
