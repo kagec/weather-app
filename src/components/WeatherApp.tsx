@@ -13,6 +13,7 @@ import {
 import NextWeather from "./NextWeather";
 import ChangeDegree from "./ChangeDegree";
 import Highlights from "./Highlights";
+import Footer from "./Footer";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -139,6 +140,7 @@ const WeatherApp: VFC = () => {
         <ChangeDegree />
         <NextWeather />
         <Highlights />
+        <Footer />
       </SubContainer>
     </AppContainer>
   );
