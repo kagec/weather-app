@@ -82,6 +82,11 @@ const SearchLocation = () => {
 
 const SearchContainer = styled.div`
   padding: 12px 46px;
+
+  @media screen and (max-width: 1024px) {
+    width: 100vw;
+    padding: 12px calc((100vw - 350px) / 2);
+  }
 `;
 
 const SearchHeader = styled.header`

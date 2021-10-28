@@ -164,7 +164,7 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
   border-radius: 10px 0 0 10px;
 
   @media screen and (max-width: 1024px) {
-    width: 375px;
+    width: 100%;
 
     ${({ isShowSearch }) => css`
       ${isShowSearch
@@ -172,7 +172,7 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
         : `border-radius: 10px 10px 0 0;`}
     `}
     ${({ isShowSearch }) => css`
-      ${isShowSearch ? `height: 672px;` : `height: 810px;`}
+      ${isShowSearch ? `height: 100vh;` : `height: 810px;`}
     `}
   }
 `;
@@ -186,9 +186,9 @@ const SubContainer = styled.div<{ isShowSearch: boolean }>`
   border-radius: 0 10px 10px 0;
 
   @media screen and (max-width: 1024px) {
-    width: 375px;
-    height: 1718px;
-    padding: 52px 23px 0;
+    width: 100%;
+    height: auto;
+    padding: 52px 23px 24px;
     border-radius: 0 0 10px 10px;
 
     ${({ isShowSearch }) => css`

@@ -128,8 +128,7 @@ const TodayWeatherWrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     padding: 18px 12px;
-    background-position: -100px 62px;
-    background-size: 580px;
+    background-position: 50% 15%;
   }
 `;
 
