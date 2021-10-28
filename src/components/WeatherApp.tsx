@@ -161,16 +161,10 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
   overflow-y: auto;
   width: 459px;
   height: 1023px;
-  border-radius: 10px 0 0 10px;
 
   @media screen and (max-width: 1024px) {
     width: 100%;
 
-    ${({ isShowSearch }) => css`
-      ${isShowSearch
-        ? `border-radius: 10px 10px 10px 10px;`
-        : `border-radius: 10px 10px 0 0;`}
-    `}
     ${({ isShowSearch }) => css`
       ${isShowSearch ? `height: 100vh;` : `height: 810px;`}
     `}
@@ -183,13 +177,11 @@ const SubContainer = styled.div<{ isShowSearch: boolean }>`
   width: 981px;
   height: 1023px;
   padding: 42px 123px 0 154px;
-  border-radius: 0 10px 10px 0;
 
   @media screen and (max-width: 1024px) {
     width: 100%;
     height: auto;
     padding: 52px 23px 24px;
-    border-radius: 0 0 10px 10px;
 
     ${({ isShowSearch }) => css`
       ${isShowSearch &&
