@@ -26,9 +26,7 @@ const ChangeDegree = () => {
 };
 
 const ChangeDegreeContainer = styled.div`
-  @media screen and (min-width: 1340px) {
-    text-align: right;
-  }
+  text-align: right;
 
   @media screen and (max-width: 1024px) {
     display: none;

@@ -49,6 +49,8 @@ const NextWeatherUl = styled.ul`
   padding: 0;
   font-weight: 500;
   font-size: 16px;
+  margin-top: 66px;
+  column-gap: 26px;
 
   > li {
     width: 120px;
@@ -56,11 +58,6 @@ const NextWeatherUl = styled.ul`
     padding: 18px 0;
     text-align: center;
     background-color: #1e213a;
-  }
-
-  @media screen and (min-width: 1340px) {
-    margin-top: 66px;
-    column-gap: 26px;
   }
 
   @media screen and (max-width: 1024px) {

@@ -159,12 +159,9 @@ const AppContainer = styled.div`
 const MainContainer = styled.div<{ isShowSearch: boolean }>`
   background-color: #1e213a;
   overflow-y: auto;
-
-  @media screen and (min-width: 1340px) {
-    width: 459px;
-    height: 1023px;
-    border-radius: 10px 0 0 10px;
-  }
+  width: 459px;
+  height: 1023px;
+  border-radius: 10px 0 0 10px;
 
   @media screen and (max-width: 1024px) {
     width: 375px;
@@ -183,13 +180,10 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
 const SubContainer = styled.div<{ isShowSearch: boolean }>`
   background: #100e1d;
   color: #e7e7eb;
-
-  @media screen and (min-width: 1340px) {
-    width: 981px;
-    height: 1023px;
-    padding: 42px 123px 0 154px;
-    border-radius: 0 10px 10px 0;
-  }
+  width: 981px;
+  height: 1023px;
+  padding: 42px 123px 0 154px;
+  border-radius: 0 10px 10px 0;
 
   @media screen and (max-width: 1024px) {
     width: 375px;

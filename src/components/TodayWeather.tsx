@@ -122,12 +122,9 @@ const TodayWeatherWrapper = styled.div`
   text-align: center;
   background-image: url(${backgroundImage});
   background-repeat: no-repeat;
-
-  @media screen and (min-width: 1340px) {
-    padding: 46px;
-    background-position: -110px 103px;
-    background-size: auto;
-  }
+  padding: 46px;
+  background-position: -110px 103px;
+  background-size: auto;
 
   @media screen and (max-width: 1024px) {
     padding: 18px 12px;
@@ -137,7 +134,7 @@ const TodayWeatherWrapper = styled.div`
 `;
 
 const TodayWeatherContainer = styled.div`
-  @media screen and (min-width: 1340px) {
+  @media screen and (min-width: 1025px) {
     > div:not(:last-child) {
       margin-top: 87px;
     }
@@ -146,10 +143,7 @@ const TodayWeatherContainer = styled.div`
 
 const ImageContainer = styled.div`
   display: inline-block;
-
-  @media screen and (min-width: 1340px) {
-    height: 250px;
-  }
+  height: 250px;
 
   @media screen and (max-width: 1024px) {
     margin-top: 70px;
