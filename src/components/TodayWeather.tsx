@@ -129,7 +129,7 @@ const TodayWeatherWrapper = styled.div`
     background-size: auto;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     padding: 18px 12px;
     background-position: -100px 62px;
     background-size: 580px;
@@ -151,7 +151,7 @@ const ImageContainer = styled.div`
     height: 250px;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 70px;
 
     > img {
@@ -171,7 +171,7 @@ const Temperature = styled.div`
     color: #a09fb1;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 35px;
   }
 `;
@@ -181,7 +181,7 @@ const WeatherName = styled.div`
   font-weight: 600;
   font-size: 36px;
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 23px;
   }
 `;
@@ -191,7 +191,7 @@ const Day = styled.div`
   font-weight: 500;
   font-size: 18px;
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 45px;
   }
 `;

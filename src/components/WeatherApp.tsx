@@ -151,7 +151,7 @@ const AppContainer = styled.div`
   position: relative;
   margin: 0 auto;
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     flex-direction: column;
   }
 `;
@@ -166,7 +166,7 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
     border-radius: 10px 0 0 10px;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     width: 375px;
 
     ${({ isShowSearch }) => css`
@@ -191,7 +191,7 @@ const SubContainer = styled.div<{ isShowSearch: boolean }>`
     border-radius: 0 10px 10px 0;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     width: 375px;
     height: 1718px;
     padding: 52px 23px 0;

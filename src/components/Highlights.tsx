@@ -95,7 +95,7 @@ const HighlightWrapper = styled.div`
     margin-top: 72px;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 51px;
   }
 `;
@@ -114,7 +114,7 @@ const HighlightContainer = styled.div`
     gap: 48px;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     gap: 32px;
   }
 `;

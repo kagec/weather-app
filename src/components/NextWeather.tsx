@@ -63,7 +63,7 @@ const NextWeatherUl = styled.ul`
     column-gap: 26px;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     flex-wrap: wrap;
     margin: 0;
     padding: 0 23px;

@@ -23,7 +23,7 @@ const FooterSign = styled.footer`
   @media screen and (min-width: 1340px) {
     margin-top: 112px;
   }
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     margin-top: 96px;
   }
 `;

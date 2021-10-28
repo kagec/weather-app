@@ -30,7 +30,7 @@ const ChangeDegreeContainer = styled.div`
     text-align: right;
   }
 
-  @media screen and (max-width: 1339px) {
+  @media screen and (max-width: 1024px) {
     display: none;
   }
 
