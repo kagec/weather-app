@@ -65,6 +65,12 @@ const NextWeatherUl = styled.ul`
     justify-content: center;
     margin: 0;
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 calc((100% - 266px) / 2);
+    justify-content: flex-start;
+    gap: 32px 26px;
+  }
 `;
 
 const ImageContainer = styled.div`

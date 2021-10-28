@@ -95,6 +95,10 @@ const HighlightWrapper = styled.div`
   @media screen and (max-width: 1024px) {
     margin-top: 51px;
   }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 calc((100% - 328px) / 2);
+  }
 `;
 
 const HighlightHeader = styled.div`
