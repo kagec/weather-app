@@ -77,7 +77,7 @@ const TodayWeather: VFC = () => {
       {!todayWeatherData || !location ? (
         <Loading>Loading...</Loading>
       ) : (
-        <TodayWeatherContainer>
+        <div>
           <TodayWeatherHeader>
             <SearchButton
               onClick={() => {
@@ -111,7 +111,7 @@ const TodayWeather: VFC = () => {
             <MaterialIcon className="material-icons">location_on</MaterialIcon>
             {location.title}
           </Place>
-        </TodayWeatherContainer>
+        </div>
       )}
     </TodayWeatherWrapper>
   );
@@ -132,17 +132,10 @@ const TodayWeatherWrapper = styled.div`
   }
 `;
 
-const TodayWeatherContainer = styled.div`
-  @media screen and (min-width: 1025px) {
-    > div:not(:last-child) {
-      margin-top: 87px;
-    }
-  }
-`;
-
 const ImageContainer = styled.div`
   display: inline-block;
   height: 250px;
+  margin-top: 87px;
 
   @media screen and (max-width: 1024px) {
     margin-top: 70px;
@@ -157,6 +150,7 @@ const Temperature = styled.div`
   font-weight: 500;
   font-size: 144px;
   color: #e7e7eb;
+  margin-top: 87px;
 
   > span {
     font-weight: 100;
@@ -173,6 +167,7 @@ const WeatherName = styled.div`
   color: #a09fb1;
   font-weight: 600;
   font-size: 36px;
+  margin-top: 87px;
 
   @media screen and (max-width: 1024px) {
     margin-top: 23px;
@@ -183,6 +178,7 @@ const Day = styled.div`
   color: #88869d;
   font-weight: 500;
   font-size: 18px;
+  margin-top: 87px;
 
   @media screen and (max-width: 1024px) {
     margin-top: 45px;
