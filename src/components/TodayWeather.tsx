@@ -17,6 +17,10 @@ import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
 import { useTemperature } from "../hooks/useTemperature";
+import {
+  LoadingAnimation,
+  LoadingContainer,
+} from "./styled-components/loading";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -75,7 +79,9 @@ const TodayWeather: VFC = () => {
   return (
     <TodayWeatherWrapper>
       {!todayWeatherData || !location ? (
-        <Loading>Loading...</Loading>
+        <Loading>
+          <LoadingAnimation backgroundColor="#1E213A"></LoadingAnimation>
+        </Loading>
       ) : (
         <div>
           <TodayWeatherHeader>
@@ -198,8 +204,8 @@ const MaterialIcon = styled.span`
   font-size: 22px;
 `;
 
-const Loading = styled.div`
-  color: #fff;
+const Loading = styled(LoadingContainer)`
+  height: 753px;
 `;
 
 const TodayWeatherHeader = styled.header`
