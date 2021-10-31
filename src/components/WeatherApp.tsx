@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import type { VFC, Dispatch } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import TodayWeather from "./TodayWeather";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import SearchLocation from "./SearchLocation";
 import {
   saveLocationData,
@@ -133,10 +133,10 @@ const WeatherApp: VFC = () => {
 
   return (
     <AppContainer>
-      <MainContainer>
+      <MainContainer isShowSearch={isShowSearch}>
         {isShowSearch ? <SearchLocation /> : <TodayWeather />}
       </MainContainer>
-      <SubContainer>
+      <SubContainer isShowSearch={isShowSearch}>
         <ChangeDegree />
         <NextWeather />
         <Highlights />
@@ -150,21 +150,46 @@ const AppContainer = styled.div`
   display: flex;
   position: relative;
   margin: 0 auto;
+
+  @media screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 `;
 
-const MainContainer = styled.div`
-  width: 459px;
-  height: 1023px;
+const MainContainer = styled.div<{ isShowSearch: boolean }>`
   background-color: #1e213a;
   overflow-y: auto;
+  width: 459px;
+  height: 1023px;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+
+    ${({ isShowSearch }) => css`
+      ${isShowSearch ? `height: 100vh;` : `height: 810px;`}
+    `}
+  }
 `;
 
-const SubContainer = styled.div`
+const SubContainer = styled.div<{ isShowSearch: boolean }>`
+  background: #100e1d;
+  color: #e7e7eb;
   width: 981px;
   height: 1023px;
-  background: #100e1d;
   padding: 42px 123px 0 154px;
-  color: #e7e7eb; ;
+
+  @media screen and (max-width: 1024px) {
+    width: 100%;
+    height: auto;
+    padding: 52px 23px 24px;
+
+    ${({ isShowSearch }) => css`
+      ${isShowSearch &&
+      `
+      display: none;
+    `}
+    `}
+  }
 `;
 
 export default WeatherApp;

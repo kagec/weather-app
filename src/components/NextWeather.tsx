@@ -47,10 +47,10 @@ const NextWeatherUl = styled.ul`
   list-style: none;
   display: flex;
   padding: 0;
-  column-gap: 26px;
   font-weight: 500;
   font-size: 16px;
   margin-top: 66px;
+  column-gap: 26px;
 
   > li {
     width: 120px;
@@ -58,6 +58,18 @@ const NextWeatherUl = styled.ul`
     padding: 18px 0;
     text-align: center;
     background-color: #1e213a;
+  }
+
+  @media screen and (max-width: 1024px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 767px) {
+    padding: 0 calc((100% - 266px) / 2);
+    justify-content: flex-start;
+    gap: 32px 26px;
   }
 `;
 

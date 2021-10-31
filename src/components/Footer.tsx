@@ -20,6 +20,10 @@ const FooterSign = styled.footer`
     font-weight: 700;
     border-bottom: solid 1px;
   }
+
+  @media screen and (max-width: 1024px) {
+    margin-top: 96px;
+  }
 `;
 
 export default Footer;
