@@ -163,7 +163,8 @@ const MainContainer = styled.div<{ isShowSearch: boolean }>`
   height: 1023px;
 
   @media screen and (max-width: 1024px) {
-    width: 100%;
+    width: vw;
+    min-width: 100%;
 
     ${({ isShowSearch }) => css`
       ${isShowSearch ? `height: 100vh;` : `height: 810px;`}
@@ -179,7 +180,8 @@ const SubContainer = styled.div<{ isShowSearch: boolean }>`
   padding: 42px 123px 0 154px;
 
   @media screen and (max-width: 1024px) {
-    width: 100%;
+    width: vw;
+    min-width: 100%;
     height: auto;
     padding: 52px 23px 24px;
 
