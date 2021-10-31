@@ -3,6 +3,10 @@ import type { ConsolidatedWeather } from "./WeatherApp";
 import { changeDateFormat, getWeatherImage } from "./TodayWeather";
 import styled from "styled-components";
 import { useTemperature } from "../hooks/useTemperature";
+import {
+  LoadingAnimation,
+  LoadingContainer,
+} from "./styled-components/loading";
 
 const NextWeather = () => {
   const [weathers, selectedWoeid]: [
@@ -16,7 +20,9 @@ const NextWeather = () => {
   const [degree, temperature] = useTemperature();
 
   return !weather ? (
-    <Loading>Loading...</Loading>
+    <Loading>
+      <LoadingAnimation></LoadingAnimation>
+    </Loading>
   ) : (
     <NextWeatherUl>
       {weather.map((weather, index) => (
@@ -90,9 +96,16 @@ const Temperature = styled.div`
   }
 `;
 
-const Loading = styled.div`
-  color: #fff;
-  text-align: center;
+const Loading = styled(LoadingContainer)`
+  height: 243px;
+
+  @media screen and (max-width: 1024px) {
+    height: 177px;
+  }
+
+  @media screen and (max-width: 767px) {
+    height: 595px;
+  }
 `;
 
 export default NextWeather;
