@@ -1,5 +1,9 @@
 import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
+import {
+  LoadingAnimation,
+  LoadingContainer,
+} from "./styled-components/loading";
 import type { ConsolidatedWeather } from "./WeatherApp";
 
 const DIRECTION_16: { [key: string]: number } = {
@@ -31,59 +35,65 @@ const Highlights = () => {
   ]);
   const weather = weathers?.[selectedWoeid]?.[0];
 
-  return !weather ? (
-    <div>Loading</div>
-  ) : (
+  return (
     <HighlightWrapper>
       <HighlightHeader>Today's Highlights</HighlightHeader>
-      <HighlightContainer>
-        <LargeTile>
-          <Title>Wind status</Title>
-          <WindData>
-            {Math.round(weather.wind_speed)}
-            <span>mph</span>
-          </WindData>
-          <Compass>
-            <MaterialIcon
-              className="material-icons"
-              angle={DIRECTION_16[weather.wind_direction_compass]}
-            >
-              navigation
-            </MaterialIcon>
-            {weather.wind_direction_compass}
-          </Compass>
-        </LargeTile>
-        <LargeTile>
-          <Title>Humidity</Title>
-          <HumidityData>
-            {weather.humidity}
-            <span>%</span>
-          </HumidityData>
-          <HumidityGauge>
-            <Scale>
-              <span>0</span>
-              <span>50</span>
-              <span>100</span>
-            </Scale>
-            <Gauge percent={weather.humidity}></Gauge>
-            <span>%</span>
-          </HumidityGauge>
-        </LargeTile>
-        <SmallTile>
-          <Title>Visibility</Title>
-          <VisibilityData>
-            {(Math.round(weather.visibility * 10) / 10).toLocaleString("de-DE")}
-            <span> miles</span>
-          </VisibilityData>
-        </SmallTile>
-        <SmallTile>
-          <Title>Air Pressure</Title>
-          <AirPressureData>
-            {Math.round(weather.air_pressure).toLocaleString("de-DE")}
-            <span> mb</span>
-          </AirPressureData>
-        </SmallTile>
-      </HighlightContainer>
+      {!weather ? (
+        <LoadingContainer>
+          <LoadingAnimation></LoadingAnimation>
+        </LoadingContainer>
+      ) : (
+        <HighlightContainer>
+          <LargeTile>
+            <Title>Wind status</Title>
+            <WindData>
+              {Math.round(weather.wind_speed)}
+              <span>mph</span>
+            </WindData>
+            <Compass>
+              <MaterialIcon
+                className="material-icons"
+                angle={DIRECTION_16[weather.wind_direction_compass]}
+              >
+                navigation
+              </MaterialIcon>
+              {weather.wind_direction_compass}
+            </Compass>
+          </LargeTile>
+          <LargeTile>
+            <Title>Humidity</Title>
+            <HumidityData>
+              {weather.humidity}
+              <span>%</span>
+            </HumidityData>
+            <HumidityGauge>
+              <Scale>
+                <span>0</span>
+                <span>50</span>
+                <span>100</span>
+              </Scale>
+              <Gauge percent={weather.humidity}></Gauge>
+              <span>%</span>
+            </HumidityGauge>
+          </LargeTile>
+          <SmallTile>
+            <Title>Visibility</Title>
+            <VisibilityData>
+              {(Math.round(weather.visibility * 10) / 10).toLocaleString(
+                "de-DE"
+              )}
+              <span> miles</span>
+            </VisibilityData>
+          </SmallTile>
+          <SmallTile>
+            <Title>Air Pressure</Title>
+            <AirPressureData>
+              {Math.round(weather.air_pressure).toLocaleString("de-DE")}
+              <span> mb</span>
+            </AirPressureData>
+          </SmallTile>
+        </HighlightContainer>
+      )}
     </HighlightWrapper>
   );
 };
