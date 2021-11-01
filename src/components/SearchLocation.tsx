@@ -10,7 +10,7 @@ import {
   saveWeatherData,
   selectCurrentWoeid,
 } from "../action/entities";
-import { toggleSearch } from "../action/ui";
+import { toggleIsSearch, toggleSearch } from "../action/ui";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
@@ -28,6 +28,8 @@ const SearchLocation = () => {
       setLocation("");
       return;
     }
+
+    dispatch(toggleIsSearch());
 
     try {
       const locationData = await axios.get(
@@ -48,8 +50,10 @@ const SearchLocation = () => {
         );
       }
       dispatch(selectCurrentWoeid(locationData.data[0].woeid));
+      dispatch(toggleIsSearch());
       dispatch(toggleSearch());
     } catch (e) {
+      dispatch(toggleIsSearch());
       alert(e);
     }
   };

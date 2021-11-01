@@ -14,6 +14,7 @@ import NextWeather from "./NextWeather";
 import ChangeDegree from "./ChangeDegree";
 import Highlights from "./Highlights";
 import Footer from "./Footer";
+import { toggleIsSearch } from "../action/ui";
 
 axios.defaults.baseURL = "https://www.metaweather.com";
 
@@ -69,6 +70,7 @@ export const fetchWeatherData: (
   coords: Coords,
   byWoeid?: { [key: number]: Location }
 ) => Promise<void> = async (dispatch, coords, byWoeid) => {
+  dispatch(toggleIsSearch());
   try {
     const locationData = await axios.get(
       `/api/location/search/?lattlong=${coords.latitude},${coords.longitude}`
@@ -77,6 +79,7 @@ export const fetchWeatherData: (
     if (byWoeid !== undefined) {
       if (byWoeid[locationData.data[0].woeid]) {
         dispatch(selectCurrentWoeid(locationData.data[0].woeid));
+        dispatch(toggleIsSearch());
         return;
       }
     }
@@ -93,7 +96,9 @@ export const fetchWeatherData: (
       )
     );
     dispatch(selectCurrentWoeid(locationData.data[0].woeid));
+    dispatch(toggleIsSearch());
   } catch (e) {
+    dispatch(toggleIsSearch());
     alert(e);
   }
 };
