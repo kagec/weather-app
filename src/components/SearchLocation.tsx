@@ -11,11 +11,20 @@ import {
   selectCurrentWoeid,
 } from "../action/entities";
 import { toggleIsSearch, toggleSearch } from "../action/ui";
+import { Location } from "./WeatherApp";
+import {
+  LoadingAnimation,
+  LoadingContainer,
+} from "./styled-components/loading";
 
 const SearchLocation = () => {
   const [location, setLocation] = useState<string>("");
   const dispatch = useDispatch();
-  const byWoeid = useSelector((state) => state.entities.locations.byWoeid);
+  const [byWoeid, isSearch]: [{ [key: number]: Location }, boolean] =
+    useSelector((state) => [
+      state.entities.locations.byWoeid,
+      state.ui.isSearch,
+    ]);
 
   const onSubmit: (e: FormEvent<HTMLFormElement>) => Promise<void> = async (
     e
@@ -58,7 +67,11 @@ const SearchLocation = () => {
     }
   };
 
-  return (
+  return isSearch ? (
+    <Loading>
+      <LoadingAnimation backgroundColor=" #1E213A" />
+    </Loading>
+  ) : (
     <SearchContainer>
       <SearchHeader>
         <CloseButton
@@ -151,6 +164,10 @@ const MaterialIcons = styled.span`
   position: absolute;
   padding: 13px 0 0 15px;
   color: #616475;
+`;
+
+const Loading = styled(LoadingContainer)`
+  height: 100vh;
 `;
 
 export default SearchLocation;
