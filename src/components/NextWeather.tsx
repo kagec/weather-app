@@ -21,7 +21,7 @@ const NextWeather = () => {
 
   return !weather ? (
     <Loading>
-      <LoadingAnimation></LoadingAnimation>
+      <LoadingAnimation />
     </Loading>
   ) : (
     <NextWeatherUl>

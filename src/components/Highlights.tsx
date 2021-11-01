@@ -40,7 +40,7 @@ const Highlights = () => {
       <HighlightHeader>Today's Highlights</HighlightHeader>
       {!weather ? (
         <LoadingContainer>
-          <LoadingAnimation></LoadingAnimation>
+          <LoadingAnimation />
         </LoadingContainer>
       ) : (
         <HighlightContainer>

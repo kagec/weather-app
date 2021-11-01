@@ -80,7 +80,7 @@ const TodayWeather: VFC = () => {
     <TodayWeatherWrapper>
       {!todayWeatherData || !location ? (
         <Loading>
-          <LoadingAnimation backgroundColor="#1E213A"></LoadingAnimation>
+          <LoadingAnimation backgroundColor="#1E213A" />
         </Loading>
       ) : (
         <div>
