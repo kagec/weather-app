@@ -26,19 +26,21 @@ const DIRECTION_16: { [key: string]: number } = {
 };
 
 const Highlights = () => {
-  const [weathers, selectedWoeid]: [
+  const [weathers, selectedWoeid, isSearch]: [
     { [key: number]: ConsolidatedWeather },
-    number
+    number,
+    boolean
   ] = useSelector((state) => [
     state.entities.weathers.byWoeid,
     state.entities.locations.selectedWoeid,
+    state.ui.isSearch,
   ]);
   const weather = weathers?.[selectedWoeid]?.[0];
 
   return (
     <HighlightWrapper>
       <HighlightHeader>Today's Highlights</HighlightHeader>
-      {!weather ? (
+      {!weather || isSearch ? (
         <LoadingContainer>
           <LoadingAnimation />
         </LoadingContainer>

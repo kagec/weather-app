@@ -9,17 +9,19 @@ import {
 } from "./styled-components/loading";
 
 const NextWeather = () => {
-  const [weathers, selectedWoeid]: [
+  const [weathers, selectedWoeid, isSearch]: [
     { [key: number]: ConsolidatedWeather },
-    number
+    number,
+    boolean
   ] = useSelector((state) => [
     state.entities.weathers.byWoeid,
     state.entities.locations.selectedWoeid,
+    state.ui.isSearch,
   ]);
   const weather = weathers?.[selectedWoeid]?.slice(1);
   const [degree, temperature] = useTemperature();
 
-  return !weather ? (
+  return !weather || isSearch ? (
     <Loading>
       <LoadingAnimation />
     </Loading>
