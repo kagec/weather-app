@@ -4,11 +4,13 @@ import type { UIAction } from "../action/ui";
 export interface UIState {
   isShowSearch: boolean;
   isFahrenheit: boolean;
+  isSearch: boolean;
 }
 
 const initialState: UIState = {
   isShowSearch: false,
   isFahrenheit: false,
+  isSearch: false,
 };
 
 export const uiReducer = (state = initialState, { type }: UIAction) => {
@@ -19,6 +21,8 @@ export const uiReducer = (state = initialState, { type }: UIAction) => {
       return { ...state, isFahrenheit: true };
     case UI_ACTION_TYPE.CHANGE_DEGREE_CELSIUS:
       return { ...state, isFahrenheit: false };
+    case UI_ACTION_TYPE.TOGGLE_IS_SEARCH:
+      return { ...state, isSearch: !state.isSearch };
     default:
       return state;
   }

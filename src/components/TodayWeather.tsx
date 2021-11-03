@@ -17,6 +17,10 @@ import { getCurrentPosition } from "./WeatherApp";
 import { Button } from "./styled-components/styledButton";
 import { toggleSearch } from "../action/ui";
 import { useTemperature } from "../hooks/useTemperature";
+import {
+  LoadingAnimation,
+  LoadingContainer,
+} from "./styled-components/loading";
 
 export const changeDateFormat = (dateString: string): string => {
   const date = new Date(dateString);
@@ -58,14 +62,16 @@ export const getWeatherImage: (weatherStateAbbr: string) => JSX.Element = (
 };
 
 const TodayWeather: VFC = () => {
-  const [locations, weathers, selectedWoeid]: [
+  const [locations, weathers, selectedWoeid, isSearch]: [
     locations: { [key: number]: Location },
     weathers: { [key: number]: ConsolidatedWeather },
-    selectedWoeid: number
+    selectedWoeid: number,
+    isSearch: boolean
   ] = useSelector((state) => [
     state.entities.locations.byWoeid,
     state.entities.weathers.byWoeid,
     state.entities.locations.selectedWoeid,
+    state.ui.isSearch,
   ]);
   const dispatch = useDispatch();
   const location = locations?.[selectedWoeid];
@@ -74,8 +80,10 @@ const TodayWeather: VFC = () => {
 
   return (
     <TodayWeatherWrapper>
-      {!todayWeatherData || !location ? (
-        <Loading>Loading...</Loading>
+      {!todayWeatherData || !location || isSearch ? (
+        <Loading>
+          <LoadingAnimation backgroundColor="#1E213A" />
+        </Loading>
       ) : (
         <div>
           <TodayWeatherHeader>
@@ -198,8 +206,8 @@ const MaterialIcon = styled.span`
   font-size: 22px;
 `;
 
-const Loading = styled.div`
-  color: #fff;
+const Loading = styled(LoadingContainer)`
+  height: 753px;
 `;
 
 const TodayWeatherHeader = styled.header`
